@@ -9,7 +9,7 @@ PaperReferenceData::usage = "PaperReferenceData[] returns an Association with al
 GenerateSyntheticCohort::usage = "GenerateSyntheticCohort[n, ageGroup] generates n synthetic patients. ageGroup: \"Octogenarian\" or \"NonOctogenarian\"."
 BaselineHazard::usage = "BaselineHazard[t, ageGroup] returns the Weibull baseline hazard at time t (years)."
 CoxPHLogHazard::usage = "CoxPHLogHazard[patient, ageGroup] computes the Cox PH linear predictor for a patient Association."
-SurvivalFunction::usage = "SurvivalFunction[t, patient, ageGroup] returns S(t) for a patient using the Cox PH model."
+AVRSurvival::usage = "AVRSurvival[t, patient, ageGroup] returns S(t) for a patient using the Cox PH model."
 KaplanMeierEstimate::usage = "KaplanMeierEstimate[eventTimes, censorFlags, tMax] computes KM survival curve."
 ComputeNNT::usage = "ComputeNNT[hr, baselineRisk] computes Number Needed to Treat."
 HospitalisationRate::usage = "HospitalisationRate[patient, avrStatus] returns expected rate per 100 patient-years."
@@ -295,7 +295,7 @@ CoxPHLogHazard[patient_Association, ageGroup_String] := Module[
 (* Survival Function                                                 *)
 (* ================================================================ *)
 
-SurvivalFunction[t_?NumericQ, patient_Association, ageGroup_String] := Module[
+AVRSurvival[t_?NumericQ, patient_Association, ageGroup_String] := Module[
   {lp, cumH0},
   lp = CoxPHLogHazard[patient, ageGroup];
   cumH0 = baselineCumHazard[t, ageGroup];
@@ -441,8 +441,8 @@ PatientRiskScore[patient_Association] := Module[
   ageGroup = patient["AgeGroup"];
   patientNoAVR = ReplacePart[patient, "AVR" -> 0];
   patientAVR = ReplacePart[patient, "AVR" -> 1];
-  survNoAVR = SurvivalFunction[5.0, patientNoAVR, ageGroup];
-  survAVR = SurvivalFunction[5.0, patientAVR, ageGroup];
+  survNoAVR = AVRSurvival[5.0, patientNoAVR, ageGroup];
+  survAVR = AVRSurvival[5.0, patientAVR, ageGroup];
   arr = survAVR - survNoAVR;
   nnt = If[arr > 0.001, 1.0 / arr, Infinity];
   hospNoAVR = HospitalisationRate[patientNoAVR, 0];
