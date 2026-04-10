@@ -121,14 +121,14 @@ Print["\n=== AUDIT 3: Survival Model Consistency ==="];
 
 (* S(0) should be 1.0 for any patient *)
 testPatient = First[testOct];
-s0 = SurvivalFunction[0.001, testPatient, "Octogenarian"];
+s0 = AVRSurvival[0.001, testPatient, "Octogenarian"];
 auditResult["S(0) near 1.0",
   Abs[s0 - 1.0] < 0.01,
   StringJoin["S(0) = ", ToString[s0]]
 ];
 
 (* S(t) should be monotonically decreasing *)
-sValues = Table[SurvivalFunction[t, testPatient, "Octogenarian"], {t, 0.1, 5.0, 0.5}];
+sValues = Table[AVRSurvival[t, testPatient, "Octogenarian"], {t, 0.1, 5.0, 0.5}];
 auditResult["S(t) monotonically decreasing",
   And @@ Table[sValues[[i]] >= sValues[[i + 1]], {i, Length[sValues] - 1}],
   "Survival function not monotonically decreasing"
@@ -137,8 +137,8 @@ auditResult["S(t) monotonically decreasing",
 (* AVR patient should have higher survival than non-AVR *)
 patientNoAVR = ReplacePart[testPatient, "AVR" -> 0];
 patientAVR = ReplacePart[testPatient, "AVR" -> 1];
-sNoAVR = SurvivalFunction[5.0, patientNoAVR, "Octogenarian"];
-sAVR = SurvivalFunction[5.0, patientAVR, "Octogenarian"];
+sNoAVR = AVRSurvival[5.0, patientNoAVR, "Octogenarian"];
+sAVR = AVRSurvival[5.0, patientAVR, "Octogenarian"];
 auditResult["AVR patient survival > non-AVR at 5 years",
   sAVR > sNoAVR,
   StringJoin["AVR: ", ToString[sAVR], " vs No-AVR: ", ToString[sNoAVR]]
@@ -147,8 +147,8 @@ auditResult["AVR patient survival > non-AVR at 5 years",
 (* HF patient should have lower survival *)
 patientNoHF = ReplacePart[patientNoAVR, "HF" -> 0];
 patientHF = ReplacePart[patientNoAVR, "HF" -> 1];
-sNoHF = SurvivalFunction[5.0, patientNoHF, "Octogenarian"];
-sHF = SurvivalFunction[5.0, patientHF, "Octogenarian"];
+sNoHF = AVRSurvival[5.0, patientNoHF, "Octogenarian"];
+sHF = AVRSurvival[5.0, patientHF, "Octogenarian"];
 auditResult["HF patient survival < non-HF (HR 2.01)",
   sHF < sNoHF,
   StringJoin["HF: ", ToString[sHF], " vs No-HF: ", ToString[sNoHF]]
