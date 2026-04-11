@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<title>Wolfram Mathematica for Cardiac Valve Research — ESL x Edwards Lifesciences</title>
+<title>MathBridge — Cardiac Valve Research → Executable Decision-Support Model</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
@@ -23,6 +23,7 @@
     --border-subtle: rgba(139, 92, 246, 0.2);
     --gradient-esl: linear-gradient(135deg, #5271FF 0%, #8C52FF 50%, #FF3131 100%);
     --gradient-wolfram: linear-gradient(135deg, #DD1100 0%, #ff4422 100%);
+    --gradient-mb: linear-gradient(135deg, #FF3131 0%, #FFDE59 25%, #5271FF 75%, #00BF63 100%);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -125,6 +126,13 @@
     background-clip: text;
   }
 
+  .mb-gradient {
+    background: var(--gradient-mb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
   .wolfram-accent { color: var(--wolfram-red); }
   .esl-green { color: var(--esl-green); }
   .esl-blue { color: var(--esl-blue); }
@@ -154,6 +162,7 @@
 
   .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
   .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
+  .grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 1rem; }
 
   .card {
     background: var(--bg-card);
@@ -215,6 +224,24 @@
     box-shadow: 0 0 40px rgba(82, 113, 255, 0.15);
   }
 
+  .screenshot-img {
+    max-width: 100%;
+    max-height: 45vh;
+    border-radius: 10px;
+    border: 1px solid var(--border-subtle);
+    box-shadow: 0 0 30px rgba(82, 113, 255, 0.12);
+  }
+
+  .screenshot-caption {
+    font-size: 0.7rem;
+    color: var(--wolfram-red);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 0.5rem;
+    text-align: center;
+  }
+
   .nb-screenshot {
     background: #1e1e2e;
     border: 1px solid var(--border-subtle);
@@ -227,7 +254,7 @@
     position: relative;
   }
   .nb-screenshot::before {
-    content: 'Mathematica Notebook Output';
+    content: 'MathBridge Notebook Output';
     display: block;
     font-size: 0.6rem;
     color: var(--wolfram-red);
@@ -250,8 +277,9 @@
   .pill-green { background: rgba(0, 191, 99, 0.15); color: var(--esl-green); border: 1px solid rgba(0, 191, 99, 0.3); }
   .pill-red { background: rgba(255, 49, 49, 0.15); color: var(--esl-red); border: 1px solid rgba(255, 49, 49, 0.3); }
   .pill-blue { background: rgba(82, 113, 255, 0.15); color: var(--esl-blue); border: 1px solid rgba(82, 113, 255, 0.3); }
+  .pill-purple { background: rgba(140, 82, 255, 0.15); color: var(--esl-purple); border: 1px solid rgba(140, 82, 255, 0.3); }
+  .pill-yellow { background: rgba(255, 222, 89, 0.15); color: var(--esl-yellow); border: 1px solid rgba(255, 222, 89, 0.3); }
 
-  /* Navigation arrows */
   .nav-arrow {
     position: fixed;
     top: 50%;
@@ -333,13 +361,69 @@
     margin: 0.5rem 0;
   }
 
+  .mb-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    background: rgba(82, 113, 255, 0.1);
+    border: 1px solid rgba(82, 113, 255, 0.3);
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--esl-blue);
+  }
+
+  .workflow-step {
+    text-align: center;
+    padding: 0.8rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 10px;
+    position: relative;
+  }
+  .workflow-step .step-num {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: var(--gradient-esl);
+    color: white;
+    font-weight: 800;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 0.5rem;
+  }
+  .workflow-step .step-title {
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--text-primary);
+    margin-bottom: 0.3rem;
+  }
+  .workflow-step .step-desc {
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+  }
+
+  .workflow-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--esl-blue);
+    opacity: 0.6;
+  }
+
   @media (max-width: 768px) {
     .slide { padding: 1rem 1.2rem; }
     .grid-2 { grid-template-columns: 1fr; gap: 0.8rem; }
     .grid-3 { grid-template-columns: 1fr; gap: 0.6rem; }
+    .grid-4 { grid-template-columns: 1fr 1fr; gap: 0.6rem; }
     .logo-bar img { height: 22px; }
     .nav-arrow { width: 36px; height: 36px; font-size: 0.9rem; }
     .author-block { flex-direction: column; gap: 0.8rem; }
+    .workflow-arrow { transform: rotate(90deg); }
   }
 
   @media (max-width: 480px) {
@@ -361,15 +445,19 @@
 <!-- ========== SLIDE 1: TITLE ========== -->
 <div class="slide">
   <div class="logo-bar">
+    <img src="assets/mathbridge_logo.png" alt="MathBridge">
+    <div class="sep"></div>
     <img src="assets/esl_logo.png" alt="ESL">
     <div class="sep"></div>
-    <img src="assets/wolfram_logo.png" alt="Wolfram Mathematica">
+    <img src="assets/wolfram_logo.png" alt="Wolfram">
   </div>
   <div class="content" style="text-align:center;">
-    <h1><span class="gradient-text">Wolfram Mathematica</span><br>for Cardiac Valve Research</h1>
-    <p class="subtitle">Transforming Published Clinical Findings into Executable, Reproducible Decision-Support Models</p>
-    <div style="margin:1.2rem 0;">
-      <img src="assets/amp-workflow.png" class="workflow-img" alt="Research-to-Code Workflow">
+    <h1><span class="mb-gradient">MathBridge</span></h1>
+    <p style="font-size:clamp(0.8rem,1.6vw,1.1rem);color:var(--text-accent);margin-bottom:0.6rem;font-weight:500;">Ask math in English. Get verified answers.</p>
+    <h2 style="font-size:clamp(1.2rem,2.8vw,2rem);font-weight:600;">Cardiac Valve Research Paper &rarr; <span class="esl-green">Executable Decision-Support Model</span></h2>
+    <p class="subtitle" style="max-width:900px;margin:0.6rem auto;">Massalha et al., <em>Open Heart</em> 2025 &mdash; automatically transformed into a validated Wolfram Mathematica analysis</p>
+    <div style="margin:1rem 0;">
+      <img src="assets/amp-workflow.png" class="workflow-img" alt="MathBridge Research-to-Code Workflow" style="max-height:38vh;">
     </div>
     <div class="author-block">
       <div class="author-affiliation">
@@ -385,24 +473,24 @@
         Gray Faculty of Medical &amp; Health Sciences
       </div>
     </div>
-    <p style="font-size:0.7rem;color:var(--text-secondary);margin-top:0.8rem;">Engineering Software Lab &bull; April 2026</p>
+    <p style="font-size:0.7rem;color:var(--text-secondary);margin-top:0.6rem;">MathBridge by ESL (Engineering Software Lab) &bull; Wolfram Technology Partner &bull; April 2026</p>
   </div>
   <div class="slide-number">01</div>
 </div>
 
 <!-- ========== SLIDE 2: THE PAPER ========== -->
 <div class="slide">
-  <div class="logo-bar"><img src="assets/esl_logo.png" alt="ESL"><div class="sep"></div><img src="assets/wolfram_logo.png" alt="Wolfram"></div>
+  <div class="logo-bar"><img src="assets/mathbridge_logo.png" alt="MathBridge"><div class="sep"></div><img src="assets/esl_logo.png" alt="ESL"><div class="sep"></div><img src="assets/wolfram_logo.png" alt="Wolfram"></div>
   <div class="content">
     <h2>The Paper: <span class="esl-blue">Treatment Disparities in HG-sAS</span></h2>
     <p class="subtitle">Open Heart 2025;12:e003405 &mdash; Maccabi HMO, 2.8M members, 2005&ndash;2022</p>
     <div class="grid-2">
       <div>
         <div class="grid-2" style="margin-bottom:1rem;">
-          <div class="stat-box"><div class="value gradient-text">1,396</div><div class="label">Patients with HG-sAS</div></div>
-          <div class="stat-box"><div class="value" style="color:var(--esl-red);">38%</div><div class="label">Less likely to get AVR<br>(octogenarians)</div></div>
-          <div class="stat-box"><div class="value esl-green">70%</div><div class="label">Mortality reduction<br>with AVR (HR 0.28)</div></div>
-          <div class="stat-box"><div class="value esl-yellow">61%</div><div class="label">Hospitalisation reduction<br>(IRR 0.39)</div></div>
+          <div class="stat-box"><div class="value gradient-text">1,396</div><div class="label">Patients with HG-sAS<br>858 non-oct + 538 oct</div></div>
+          <div class="stat-box"><div class="value" style="color:var(--esl-red);">38%</div><div class="label">Less likely to get AVR<br>(oct: 42% vs non-oct: 60%)</div></div>
+          <div class="stat-box"><div class="value esl-green">HR 0.28</div><div class="label">70% mortality reduction<br>with AVR (octogenarians)</div></div>
+          <div class="stat-box"><div class="value esl-yellow">IRR 0.39</div><div class="label">61% hospitalisation reduction<br>(84 → 41 per 100 pt-yr)</div></div>
         </div>
       </div>
       <div class="card">
@@ -417,89 +505,119 @@
         </ul>
         <br>
         <p><strong>Both symptomatic and asymptomatic octogenarians benefit equally from AVR.</strong></p>
+        <div class="mb-badge" style="margin-top:0.6rem;">&#9889; MathBridge extracted &amp; verified all statistics from this paper</div>
       </div>
     </div>
   </div>
   <div class="slide-number">02</div>
 </div>
 
-<!-- ========== SLIDE 3: WHY MATHEMATICA ========== -->
+<!-- ========== SLIDE 3: WHAT IS MATHBRIDGE ========== -->
 <div class="slide">
-  <div class="logo-bar"><img src="assets/esl_logo.png" alt="ESL"><div class="sep"></div><img src="assets/wolfram_logo.png" alt="Wolfram"></div>
+  <div class="logo-bar"><img src="assets/mathbridge_logo.png" alt="MathBridge"><div class="sep"></div><img src="assets/esl_logo.png" alt="ESL"><div class="sep"></div><img src="assets/wolfram_logo.png" alt="Wolfram"></div>
   <div class="content">
-    <h2>Why <span class="wolfram-accent">Wolfram Mathematica</span> for This Research?</h2>
-    <p class="subtitle">R and Python got you here. Mathematica takes you further.</p>
+    <h2>What is <span class="mb-gradient">MathBridge</span>?</h2>
+    <p class="subtitle">Upload a research paper. Ask questions in plain English. Get CAS-verified answers with interactive Wolfram notebooks.</p>
     <div class="grid-3">
-      <div class="card">
-        <h3>&#9881; Symbolic + Numeric</h3>
-        <ul>
-          <li>Cox PH hazard algebra computed symbolically, evaluated numerically</li>
-          <li>Exact gradient computation for sensitivity analysis</li>
-          <li>Weibull baseline hazard: closed-form S(t) = exp[-H&#8320;(t)&middot;e<sup>&beta;X</sup>]</li>
-        </ul>
+      <div class="card" style="border-top:3px solid var(--esl-red);">
+        <h3 style="color:var(--esl-red);">&#128196; Upload Your Paper</h3>
+        <p>Drag any PDF &mdash; clinical trial, review, methods paper. MathBridge reads the full text, tables, and figures.</p>
       </div>
-      <div class="card">
-        <h3>&#128202; Instant Visualisation</h3>
-        <ul>
-          <li>Publication-quality KM curves in 3 lines</li>
-          <li>Interactive <code>Manipulate</code> dashboards &mdash; no Shiny/Dash needed</li>
-          <li>3D surface plots for multi-parameter sensitivity</li>
-        </ul>
+      <div class="card" style="border-top:3px solid var(--esl-blue);">
+        <h3>&#128172; Ask in English</h3>
+        <p><em>"Reproduce the Kaplan-Meier curves from Figure 2"</em><br><em>"Build a Cox PH model from Table 5 hazard ratios"</em><br><em>"What's the NNT at 5 years for octogenarians?"</em></p>
       </div>
-      <div class="card">
-        <h3>&#128300; Reproducibility</h3>
-        <ul>
-          <li>Single <code>.nb</code> file: code + text + results + figures</li>
-          <li><code>SeedRandom[42]</code> &mdash; deterministic everywhere</li>
-          <li>Self-contained: no pip install, no CRAN, no Docker</li>
-        </ul>
+      <div class="card" style="border-top:3px solid var(--esl-green);">
+        <h3 style="color:var(--esl-green);">&#10003; Verified Answers</h3>
+        <p>Every answer is backed by Wolfram Engine computation &mdash; symbolic algebra, not statistical sampling. Downloadable <code>.nb</code> notebooks included.</p>
       </div>
-      <div class="card">
-        <h3>&#128187; Statistical Engine</h3>
-        <ul>
-          <li>Built-in <code>SurvivalModelFit</code>, <code>CoxModelFit</code></li>
-          <li>200+ probability distributions</li>
-          <li>Negative binomial, Weibull, truncated normal &mdash; native</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>&#128218; Teaching &amp; Publishing</h3>
-        <ul>
-          <li>Notebooks serve as lecture materials</li>
-          <li>Students interact with <code>Manipulate</code> widgets</li>
-          <li>Export to LaTeX, PDF, CDF for distribution</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>&#128640; Deployment</h3>
-        <ul>
-          <li>Wolfram Cloud: instant web API from any function</li>
-          <li>Embed decision tools in hospital EHR systems</li>
-          <li><code>.wl</code> packages: reusable across projects</li>
-        </ul>
-      </div>
+    </div>
+    <div class="highlight-box" style="margin-top:1rem;text-align:center;">
+      <strong style="color:var(--esl-green);">MathBridge</strong> is built by <strong>ESL</strong> (Engineering Software Lab), Wolfram Technology Partner for Israel.<br>
+      Powered by <strong>Ampcode</strong> + <strong>Wolfram Engine</strong>. Outputs: interactive plots, downloadable .nb notebooks, step-by-step proofs.
     </div>
   </div>
   <div class="slide-number">03</div>
 </div>
 
-<!-- ========== SLIDE 4: ARCHITECTURE ========== -->
+<!-- ========== SLIDE 4: MATHBRIDGE WORKFLOW ========== -->
 <div class="slide">
-  <div class="logo-bar"><img src="assets/esl_logo.png" alt="ESL"><div class="sep"></div><img src="assets/wolfram_logo.png" alt="Wolfram"></div>
+  <div class="logo-bar"><img src="assets/mathbridge_logo.png" alt="MathBridge"><div class="sep"></div><img src="assets/esl_logo.png" alt="ESL"><div class="sep"></div><img src="assets/wolfram_logo.png" alt="Wolfram"></div>
   <div class="content">
-    <h2>Architecture: <span class="esl-purple">AVRDecisionEngine.wl</span></h2>
-    <p class="subtitle">Modular Wolfram Language package &mdash; 13 public functions, Association-based I/O</p>
+    <h2><span class="mb-gradient">MathBridge</span> Workflow</h2>
+    <p class="subtitle">From PDF upload to verified interactive results — fully automated pipeline</p>
+    <div style="display:grid;grid-template-columns:1fr auto 1fr auto 1fr auto 1fr auto 1fr auto 1fr;gap:0.4rem;align-items:center;">
+      <div class="workflow-step">
+        <div class="step-num">1</div>
+        <div class="step-title">Upload PDF</div>
+        <div class="step-desc">Researcher uploads paper</div>
+      </div>
+      <div class="workflow-arrow">→</div>
+      <div class="workflow-step">
+        <div class="step-num">2</div>
+        <div class="step-title">AI Reads Paper</div>
+        <div class="step-desc">Extracts equations, tables, HRs</div>
+      </div>
+      <div class="workflow-arrow">→</div>
+      <div class="workflow-step">
+        <div class="step-num">3</div>
+        <div class="step-title">Generate Code</div>
+        <div class="step-desc">Wolfram Language with syntax validation</div>
+      </div>
+      <div class="workflow-arrow">→</div>
+      <div class="workflow-step">
+        <div class="step-num">4</div>
+        <div class="step-title">Execute</div>
+        <div class="step-desc">Wolfram Engine computes results</div>
+      </div>
+      <div class="workflow-arrow">→</div>
+      <div class="workflow-step">
+        <div class="step-num">5</div>
+        <div class="step-title">Verify</div>
+        <div class="step-desc">AI cross-checks against paper values</div>
+      </div>
+      <div class="workflow-arrow">→</div>
+      <div class="workflow-step">
+        <div class="step-num">6</div>
+        <div class="step-title">Deliver</div>
+        <div class="step-desc">Interactive plots + .nb notebooks</div>
+      </div>
+    </div>
+    <div class="grid-2" style="margin-top:1.2rem;">
+      <div class="card">
+        <h3>For This Paper</h3>
+        <p>MathBridge read Massalha et al. (2025), extracted 19 hazard ratios from Table 5, reconstructed the Cox PH model, generated a synthetic 1,396-patient cohort, produced KM survival curves, and delivered a fully validated interactive notebook &mdash; all from a single PDF upload.</p>
+      </div>
+      <div class="card">
+        <h3>What Makes It Different</h3>
+        <ul>
+          <li><strong>CAS-verified:</strong> Wolfram Engine, not GPT guessing</li>
+          <li><strong>Symbolic math:</strong> Exact algebra, not numerical approximation</li>
+          <li><strong>Reproducible:</strong> Deterministic — same seed, same results</li>
+          <li><strong>Interactive:</strong> Manipulate dashboards, not static plots</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">04</div>
+</div>
+
+<!-- ========== SLIDE 5: ARCHITECTURE ========== -->
+<div class="slide">
+  <div class="logo-bar"><img src="assets/mathbridge_logo.png" alt="MathBridge"><div class="sep"></div><img src="assets/esl_logo.png" alt="ESL"><div class="sep"></div><img src="assets/wolfram_logo.png" alt="Wolfram"></div>
+  <div class="content">
+    <h2>MathBridge Output: <span class="esl-purple">AVRDecisionEngine.wl</span></h2>
+    <p class="subtitle">Auto-generated Wolfram Language package &mdash; 13 public functions, Association-based I/O</p>
     <div class="grid-2">
       <div>
         <div class="code-block"><span class="kw">BeginPackage</span>[<span class="str">"AVRDecisionEngine`"</span>]
 
-<span class="cm">(* 13 Public Functions *)</span>
+<span class="cm">(* 13 Public Functions — generated by MathBridge *)</span>
 <span class="fn">PaperReferenceData</span>[]       <span class="cm">(* All paper data as Association *)</span>
 <span class="fn">GenerateSyntheticCohort</span>[n, ageGroup]
 <span class="fn">BaselineHazard</span>[t, ageGroup] <span class="cm">(* Weibull: h₀(t) *)</span>
 <span class="fn">CoxPHLogHazard</span>[patient, ageGroup]
-<span class="fn">SurvivalFunction</span>[t, patient, ageGroup]
-<span class="fn">SimulateEventTime</span>[patient, ageGroup, tMax]
+<span class="fn">AVRSurvival</span>[t, patient, ageGroup]
 <span class="fn">KaplanMeierEstimate</span>[times, censor, tMax]
 <span class="fn">ComputeNNT</span>[hr, baselineRisk]
 <span class="fn">HospitalisationRate</span>[patient, avr]
@@ -521,7 +639,7 @@
             Paper Tables 1&ndash;5 &rarr; <span class="esl-blue">PaperReferenceData[]</span><br>
             &rarr; <span class="esl-green">GenerateSyntheticCohort</span> (N=1396)<br>
             &rarr; <span class="esl-purple">CoxPHLogHazard</span> (19 covariates)<br>
-            &rarr; <span class="wolfram-accent">SurvivalFunction</span> S(t|X)<br>
+            &rarr; <span class="wolfram-accent">AVRSurvival</span> S(t|X)<br>
             &rarr; <span class="esl-yellow">PatientRiskScore</span> (recommendation)
           </p>
         </div>
@@ -533,19 +651,20 @@
             <li><strong>Paper-traceable:</strong> Every HR maps to Table 4 or 5</li>
             <li><strong>Validated:</strong> 25+ automated audit checks</li>
           </ul>
+          <div class="mb-badge" style="margin-top:0.6rem;">&#9889; Entire package auto-generated by MathBridge</div>
         </div>
       </div>
     </div>
   </div>
-  <div class="slide-number">04</div>
+  <div class="slide-number">05</div>
 </div>
 
-<!-- ========== SLIDE 5: SYNTHETIC COHORT ========== -->
+<!-- ========== SLIDE 6: SYNTHETIC COHORT ========== -->
 <div class="slide">
-  <div class="logo-bar"><img src="assets/esl_logo.png" alt="ESL"><div class="sep"></div><img src="assets/wolfram_logo.png" alt="Wolfram"></div>
+  <div class="logo-bar"><img src="assets/mathbridge_logo.png" alt="MathBridge"><div class="sep"></div><img src="assets/esl_logo.png" alt="ESL"><div class="sep"></div><img src="assets/wolfram_logo.png" alt="Wolfram"></div>
   <div class="content">
-    <h2>Synthetic Cohort Generation: <span class="esl-green">Validated Against Paper</span></h2>
-    <p class="subtitle">1,396 patients generated with matching distributions for 20+ clinical parameters</p>
+    <h2>Synthetic Cohort: <span class="esl-green">Validated Against Paper</span></h2>
+    <p class="subtitle">MathBridge generated 1,396 patients with matching distributions for 20+ clinical parameters</p>
     <div class="grid-2">
       <div>
         <div class="nb-screenshot">
@@ -580,7 +699,7 @@
         </div>
         <div class="card">
           <h3>Validation: 20 Parameters Checked</h3>
-          <p>Each synthetic parameter compared against paper Table 1 &amp; 2 values with tolerance thresholds:</p>
+          <p>MathBridge automatically validates each synthetic parameter against paper Table 1 &amp; 2 values:</p>
           <ul>
             <li>Continuous: |observed &minus; expected| &lt; 2 SD</li>
             <li>Proportions: |observed &minus; expected| &lt; 5%</li>
@@ -593,15 +712,15 @@
       </div>
     </div>
   </div>
-  <div class="slide-number">05</div>
+  <div class="slide-number">06</div>
 </div>
 
-<!-- ========== SLIDE 6: COX PH MODEL ========== -->
+<!-- ========== SLIDE 7: COX PH MODEL + SCREENSHOT ========== -->
 <div class="slide">
-  <div class="logo-bar"><img src="assets/esl_logo.png" alt="ESL"><div class="sep"></div><img src="assets/wolfram_logo.png" alt="Wolfram"></div>
+  <div class="logo-bar"><img src="assets/mathbridge_logo.png" alt="MathBridge"><div class="sep"></div><img src="assets/esl_logo.png" alt="ESL"><div class="sep"></div><img src="assets/wolfram_logo.png" alt="Wolfram"></div>
   <div class="content">
     <h2>Cox PH Survival Model: <span class="wolfram-accent">19 Covariates</span></h2>
-    <p class="subtitle">Reconstructed from Table 5 hazard ratios &mdash; time-dependent AVR + symptoms</p>
+    <p class="subtitle">MathBridge reconstructed the full model from Table 5 hazard ratios</p>
     <div class="grid-2">
       <div>
         <div class="formula" style="font-size:0.8rem;">
@@ -610,10 +729,7 @@
         <div class="formula" style="font-size:0.75rem;">
           H&#8320;(t) = (&lambda;t)<sup>&alpha;</sup> &nbsp;&nbsp; (Weibull baseline)
         </div>
-        <div class="formula" style="font-size:0.7rem;">
-          &beta;&prime;X = &Sigma; log(HR<sub>k</sub>) &middot; X<sub>k</sub> &nbsp; (19 terms from Table 5)
-        </div>
-        <div class="table-container" style="margin-top:0.8rem;">
+        <div class="table-container" style="margin-top:0.6rem;">
           <table>
             <tr><th>Covariate</th><th>HR (Oct)</th><th>HR (Non-Oct)</th></tr>
             <tr><td><strong>AVR</strong></td><td class="sig">0.32</td><td>0.59</td></tr>
@@ -627,109 +743,77 @@
           </table>
         </div>
       </div>
-      <div>
-        <div class="nb-screenshot">
-          <div><span class="nb-label">CoxPHLogHazard[patient, "Octogenarian"]</span></div>
-          <div style="margin-top:0.4rem;">
-            <span class="nb-output">(* Computes: *)</span><br>
-            <span class="nb-val">lp += Log[0.32] * AVR</span><br>
-            <span class="nb-val">lp += Log[1.43] * Symptoms</span><br>
-            <span class="nb-val">lp += Log[1.09] * (Age - 84)</span><br>
-            <span class="nb-val">lp += Log[2.01] * HF</span><br>
-            <span class="nb-val">lp += Log[1.40] * AF</span><br>
-            <span class="nb-val">   ... (19 covariates total)</span><br>
-            <span style="color:var(--esl-green);">&#8594; -0.847</span> <span class="nb-output">(log-hazard ratio)</span>
-          </div>
-          <div style="margin-top:0.6rem;border-top:1px solid rgba(255,255,255,0.1);padding-top:0.6rem;">
-            <span class="nb-label">SurvivalFunction[5.0, patient, "Octogenarian"]</span><br>
-            <span style="color:var(--esl-green);">&#8594; 0.723</span> <span class="nb-output">(72.3% 5-yr survival)</span>
-          </div>
-        </div>
-        <div class="card" style="margin-top:0.8rem;">
-          <h3>Weibull Calibration</h3>
-          <table style="font-size:0.75rem;">
-            <tr><th>Parameter</th><th>Octogenarian</th><th>Non-Oct</th></tr>
-            <tr><td>Shape (&alpha;)</td><td>1.3</td><td>1.2</td></tr>
-            <tr><td>Scale (&lambda;<sup>-1</sup>)</td><td>6.5 yr</td><td>9.0 yr</td></tr>
-            <tr><td>5yr baseline mort.</td><td>~40%</td><td>~25%</td></tr>
-          </table>
-        </div>
+      <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;">
+        <img src="assets/4.1.png" class="screenshot-img" alt="Risk Score Histogram — MathBridge Output">
+        <div class="screenshot-caption">MathBridge Output — Cox PH Risk Score Distribution</div>
       </div>
     </div>
-  </div>
-  <div class="slide-number">06</div>
-</div>
-
-<!-- ========== SLIDE 7: KM CURVES ========== -->
-<div class="slide">
-  <div class="logo-bar"><img src="assets/esl_logo.png" alt="ESL"><div class="sep"></div><img src="assets/wolfram_logo.png" alt="Wolfram"></div>
-  <div class="content">
-    <h2>Kaplan-Meier Survival Curves: <span class="esl-blue">Reproducing Figures 1 &amp; 2</span></h2>
-    <p class="subtitle">Simulated event times via inverse-CDF method with Cox PH risk adjustment</p>
-    <div class="grid-2">
-      <div class="nb-screenshot" style="min-height:200px;">
-        <div style="text-align:center;margin-bottom:0.5rem;color:var(--esl-blue);font-weight:600;">Non-Octogenarians (&lt; 80 yr)</div>
-        <div style="position:relative;height:180px;border:1px solid rgba(255,255,255,0.1);border-radius:4px;padding:0.5rem;">
-          <svg viewBox="0 0 300 150" style="width:100%;height:100%;">
-            <line x1="30" y1="10" x2="30" y2="140" stroke="#333" stroke-width="1"/>
-            <line x1="30" y1="140" x2="290" y2="140" stroke="#333" stroke-width="1"/>
-            <text x="5" y="15" fill="#94a3b8" font-size="8">1.0</text>
-            <text x="5" y="80" fill="#94a3b8" font-size="8">0.5</text>
-            <text x="5" y="140" fill="#94a3b8" font-size="8">0.0</text>
-            <text x="150" y="155" fill="#94a3b8" font-size="8" text-anchor="middle">Years</text>
-            <!-- AVR line (blue) -->
-            <polyline points="30,15 80,20 130,28 180,38 230,52 280,65" fill="none" stroke="#5271FF" stroke-width="2.5"/>
-            <!-- No AVR line (red) -->
-            <polyline points="30,15 80,35 130,58 180,82 230,105 280,118" fill="none" stroke="#FF3131" stroke-width="2.5"/>
-            <rect x="180" y="12" width="8" height="3" fill="#5271FF"/><text x="192" y="16" fill="#94a3b8" font-size="7">AVR</text>
-            <rect x="180" y="22" width="8" height="3" fill="#FF3131"/><text x="192" y="26" fill="#94a3b8" font-size="7">No AVR</text>
-          </svg>
-        </div>
-      </div>
-      <div class="nb-screenshot" style="min-height:200px;">
-        <div style="text-align:center;margin-bottom:0.5rem;color:var(--wolfram-red);font-weight:600;">Octogenarians (&ge; 80 yr)</div>
-        <div style="position:relative;height:180px;border:1px solid rgba(255,255,255,0.1);border-radius:4px;padding:0.5rem;">
-          <svg viewBox="0 0 300 150" style="width:100%;height:100%;">
-            <line x1="30" y1="10" x2="30" y2="140" stroke="#333" stroke-width="1"/>
-            <line x1="30" y1="140" x2="290" y2="140" stroke="#333" stroke-width="1"/>
-            <text x="5" y="15" fill="#94a3b8" font-size="8">1.0</text>
-            <text x="5" y="80" fill="#94a3b8" font-size="8">0.5</text>
-            <text x="5" y="140" fill="#94a3b8" font-size="8">0.0</text>
-            <text x="150" y="155" fill="#94a3b8" font-size="8" text-anchor="middle">Years</text>
-            <!-- AVR line (blue) - better survival -->
-            <polyline points="30,15 80,22 130,32 180,45 230,60 280,72" fill="none" stroke="#5271FF" stroke-width="2.5"/>
-            <!-- No AVR line (red) - much worse -->
-            <polyline points="30,15 80,42 130,70 180,95 230,115 280,128" fill="none" stroke="#FF3131" stroke-width="2.5"/>
-            <rect x="180" y="12" width="8" height="3" fill="#5271FF"/><text x="192" y="16" fill="#94a3b8" font-size="7">AVR</text>
-            <rect x="180" y="22" width="8" height="3" fill="#FF3131"/><text x="192" y="26" fill="#94a3b8" font-size="7">No AVR</text>
-            <!-- Annotation -->
-            <text x="200" y="100" fill="#00BF63" font-size="8" font-weight="bold">HR 0.28</text>
-          </svg>
-        </div>
-      </div>
-    </div>
-    <div class="highlight-box" style="margin-top:0.8rem;text-align:center;">
-      <strong style="color:var(--esl-green);">Key Result:</strong> The survival gap is <em>wider</em> in octogenarians &mdash; AVR benefit is <em>stronger</em> (HR 0.28 vs 0.38), not weaker, in the elderly.
-    </div>
-    <div class="code-block" style="margin-top:0.5rem;font-size:0.7rem;">
-<span class="cm">(* Event simulation via inverse-CDF: *)</span>
-u = <span class="fn">RandomReal</span>[];  cumH = -<span class="fn">Log</span>[u] / <span class="fn">Exp</span>[lp];
-eventTime = (cumH^(<span class="num">1</span>/shape)) / lambda;  <span class="cm">(* Weibull inversion *)</span></div>
   </div>
   <div class="slide-number">07</div>
 </div>
 
-<!-- ========== SLIDE 8: NNT ========== -->
+<!-- ========== SLIDE 8: KM CURVES + SCREENSHOT ========== -->
 <div class="slide">
-  <div class="logo-bar"><img src="assets/esl_logo.png" alt="ESL"><div class="sep"></div><img src="assets/wolfram_logo.png" alt="Wolfram"></div>
+  <div class="logo-bar"><img src="assets/mathbridge_logo.png" alt="MathBridge"><div class="sep"></div><img src="assets/esl_logo.png" alt="ESL"><div class="sep"></div><img src="assets/wolfram_logo.png" alt="Wolfram"></div>
+  <div class="content">
+    <h2>Kaplan-Meier Survival Curves: <span class="esl-blue">Reproducing Figures 1 &amp; 2</span></h2>
+    <p class="subtitle">MathBridge simulated event times via inverse-CDF method with Cox PH risk adjustment</p>
+    <div style="text-align:center;margin-bottom:0.8rem;">
+      <img src="assets/5.2.png" class="screenshot-img" alt="KM Survival Curves — MathBridge Output" style="max-height:42vh;">
+      <div class="screenshot-caption">MathBridge Output — Kaplan-Meier Survival: AVR vs No AVR by Age Group</div>
+    </div>
+    <div class="grid-2">
+      <div class="highlight-box" style="text-align:center;">
+        <strong style="color:var(--esl-green);">Key Result:</strong> The survival gap is <em>wider</em> in octogenarians &mdash; AVR benefit is <em>stronger</em> (HR 0.28 vs 0.38), not weaker, in the elderly.
+      </div>
+      <div class="code-block" style="font-size:0.7rem;">
+<span class="cm">(* MathBridge: event simulation via inverse-CDF *)</span>
+u = <span class="fn">RandomReal</span>[];  cumH = -<span class="fn">Log</span>[u] / <span class="fn">Exp</span>[lp];
+eventTime = (cumH^(<span class="num">1</span>/shape)) / lambda;</div>
+    </div>
+  </div>
+  <div class="slide-number">08</div>
+</div>
+
+<!-- ========== SLIDE 9: SUBGROUP ANALYSIS + SCREENSHOT ========== -->
+<div class="slide">
+  <div class="logo-bar"><img src="assets/mathbridge_logo.png" alt="MathBridge"><div class="sep"></div><img src="assets/esl_logo.png" alt="ESL"><div class="sep"></div><img src="assets/wolfram_logo.png" alt="Wolfram"></div>
+  <div class="content">
+    <h2>Subgroup Survival Analysis: <span class="esl-purple">4-Panel Comparison</span></h2>
+    <p class="subtitle">MathBridge reproduced the symptom × age interaction — the paper's central finding</p>
+    <div style="text-align:center;margin-bottom:0.6rem;">
+      <img src="assets/5.3.png" class="screenshot-img" alt="4-Panel Subgroup Analysis — MathBridge Output" style="max-height:42vh;">
+      <div class="screenshot-caption">MathBridge Output — Subgroup KM Curves: Symptomatic/Asymptomatic × Octogenarian/Non-Octogenarian</div>
+    </div>
+    <div class="grid-3">
+      <div class="stat-box" style="border-top:3px solid var(--esl-green);">
+        <div class="value esl-green" style="font-size:1.4rem;">p = 0.6</div>
+        <div class="label">Interaction (Octogenarians)<br>AVR benefit same ± symptoms</div>
+      </div>
+      <div class="stat-box" style="border-top:3px solid var(--esl-red);">
+        <div class="value" style="color:var(--esl-red);font-size:1.4rem;">p = 0.04</div>
+        <div class="label">Interaction (Non-Oct)<br>AVR benefit differs by symptoms</div>
+      </div>
+      <div class="stat-box" style="border-top:3px solid var(--esl-yellow);">
+        <div class="value esl-yellow" style="font-size:1.4rem;">NS</div>
+        <div class="label">Asymp non-oct HR 0.60<br>p=0.10 — benefit unclear</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">09</div>
+</div>
+
+<!-- ========== SLIDE 10: NNT ANALYSIS ========== -->
+<div class="slide">
+  <div class="logo-bar"><img src="assets/mathbridge_logo.png" alt="MathBridge"><div class="sep"></div><img src="assets/esl_logo.png" alt="ESL"><div class="sep"></div><img src="assets/wolfram_logo.png" alt="Wolfram"></div>
   <div class="content">
     <h2>Number Needed to Treat: <span class="esl-green">Quantifying Clinical Value</span></h2>
-    <p class="subtitle">ARR = BaselineRisk &minus; Risk<sub>AVR</sub> &nbsp;&nbsp;|&nbsp;&nbsp; NNT = 1 / ARR</p>
+    <p class="subtitle">MathBridge computed NNT across all subgroups — ARR = BaselineRisk &minus; Risk<sub>AVR</sub></p>
     <div class="grid-2">
       <div class="table-container">
         <table>
           <tr><th>Subgroup</th><th>HR</th><th>1yr NNT</th><th>3yr NNT</th><th>5yr NNT</th></tr>
-          <tr><td><strong>Oct Overall</strong></td><td class="sig">0.28</td><td>11.5</td><td>3.9</td><td>2.8</td></tr>
+          <tr><td><strong>Oct Overall</strong></td><td class="sig">0.28</td><td>11.5</td><td>3.9</td><td class="sig">2.8</td></tr>
           <tr><td>Oct Symptomatic</td><td class="sig">0.28</td><td>11.5</td><td>3.9</td><td>2.8</td></tr>
           <tr><td>Oct Asymptomatic</td><td class="sig">0.29</td><td>11.8</td><td>4.0</td><td>2.8</td></tr>
           <tr><td><strong>Non-Oct Overall</strong></td><td class="sig">0.38</td><td>20.0</td><td>7.3</td><td>4.6</td></tr>
@@ -765,15 +849,15 @@ eventTime = (cumH^(<span class="num">1</span>/shape)) / lambda;  <span class="cm
       </div>
     </div>
   </div>
-  <div class="slide-number">08</div>
+  <div class="slide-number">10</div>
 </div>
 
-<!-- ========== SLIDE 9: HOSPITALISATION ========== -->
+<!-- ========== SLIDE 11: HOSPITALISATION MODEL ========== -->
 <div class="slide">
-  <div class="logo-bar"><img src="assets/esl_logo.png" alt="ESL"><div class="sep"></div><img src="assets/wolfram_logo.png" alt="Wolfram"></div>
+  <div class="logo-bar"><img src="assets/mathbridge_logo.png" alt="MathBridge"><div class="sep"></div><img src="assets/esl_logo.png" alt="ESL"><div class="sep"></div><img src="assets/wolfram_logo.png" alt="Wolfram"></div>
   <div class="content">
-    <h2>Hospitalisation Model: <span class="esl-yellow">Negative Binomial Simulation</span></h2>
-    <p class="subtitle">IRR 0.39 &mdash; AVR nearly halves hospitalisation burden in octogenarians</p>
+    <h2>Hospitalisation Model: <span class="esl-yellow">IRR 0.39 — 61% Reduction</span></h2>
+    <p class="subtitle">MathBridge built a negative binomial simulation from the paper's hospitalisation data</p>
     <div class="grid-2">
       <div>
         <div class="grid-2">
@@ -781,7 +865,7 @@ eventTime = (cumH^(<span class="num">1</span>/shape)) / lambda;  <span class="cm
           <div class="stat-box"><div class="value esl-green">41</div><div class="label">Hospitalisations / 100 pt-yr<br><strong>WITH AVR</strong></div></div>
         </div>
         <div class="code-block" style="margin-top:0.8rem;font-size:0.7rem;">
-<span class="cm">(* Negative binomial: handles overdispersion *)</span>
+<span class="cm">(* MathBridge: Negative binomial for overdispersion *)</span>
 <span class="fn">NegBinomHospitalisations</span>[patient, avr, years] :=
   <span class="kw">Module</span>[{rate, mu, r, p},
     rate = <span class="fn">HospitalisationRate</span>[patient, avr] / <span class="num">100</span>;
@@ -811,76 +895,103 @@ eventTime = (cumH^(<span class="num">1</span>/shape)) / lambda;  <span class="cm
       </div>
     </div>
   </div>
-  <div class="slide-number">09</div>
+  <div class="slide-number">11</div>
 </div>
 
-<!-- ========== SLIDE 10: INTERACTIVE DASHBOARD ========== -->
+<!-- ========== SLIDE 12: TREATMENT GAP + SCREENSHOT ========== -->
 <div class="slide">
-  <div class="logo-bar"><img src="assets/esl_logo.png" alt="ESL"><div class="sep"></div><img src="assets/wolfram_logo.png" alt="Wolfram"></div>
+  <div class="logo-bar"><img src="assets/mathbridge_logo.png" alt="MathBridge"><div class="sep"></div><img src="assets/esl_logo.png" alt="ESL"><div class="sep"></div><img src="assets/wolfram_logo.png" alt="Wolfram"></div>
   <div class="content">
-    <h2>Interactive Clinical Dashboard: <span class="esl-purple">Manipulate</span></h2>
-    <p class="subtitle">Real-time patient risk scoring &mdash; adjust parameters, see immediate AVR benefit</p>
+    <h2>Treatment Gap Quantification: <span class="esl-red">Lives at Stake</span></h2>
+    <p class="subtitle">MathBridge modelled what happens if octogenarian AVR rates matched non-octogenarian rates</p>
     <div class="grid-2">
-      <div class="nb-screenshot" style="background:#1a1a2a;">
-        <div style="font-size:0.65rem;color:var(--wolfram-red);margin-bottom:0.3rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;">Mathematica Manipulate Widget</div>
-        <div style="border:1px solid rgba(140,82,255,0.3);border-radius:6px;padding:0.6rem;background:rgba(0,0,0,0.3);">
-          <div style="font-size:0.7rem;color:#aaa;margin-bottom:0.5rem;">
-            <div style="display:flex;justify-content:space-between;margin:0.2rem 0;">
-              <span>Age (years)</span>
-              <span style="color:var(--esl-blue);">&#9644;&#9644;&#9644;&#9644;&#9644;&#9679;&#9644;&#9644; <strong>84</strong></span>
-            </div>
-            <div style="display:flex;justify-content:space-between;margin:0.2rem 0;">
-              <span>Sex</span>
-              <span><span class="pill pill-blue">Male</span> Female</span>
-            </div>
-            <div style="display:flex;justify-content:space-between;margin:0.2rem 0;">
-              <span>MPG (mmHg)</span>
-              <span style="color:var(--esl-blue);">&#9644;&#9644;&#9644;&#9679;&#9644;&#9644;&#9644;&#9644; <strong>50</strong></span>
-            </div>
-            <div style="display:flex;justify-content:space-between;margin:0.2rem 0;">
-              <span>AVA (cm&sup2;)</span>
-              <span style="color:var(--esl-blue);">&#9644;&#9644;&#9679;&#9644;&#9644;&#9644;&#9644;&#9644; <strong>0.70</strong></span>
-            </div>
-            <div style="margin-top:0.3rem;display:flex;gap:0.4rem;flex-wrap:wrap;">
-              <span class="pill pill-green">&#10003; Symptomatic</span>
-              <span class="pill pill-red">&#10003; Heart Failure</span>
-              <span class="pill pill-blue">&#10003; AF</span>
-              <span class="pill pill-green">&#10003; HTN</span>
-            </div>
+      <div>
+        <div class="grid-3" style="margin-bottom:1rem;">
+          <div class="stat-box" style="border-top:3px solid var(--esl-red);">
+            <div class="value" style="color:var(--esl-red);font-size:2rem;">42%</div>
+            <div class="label">Current octogenarian<br>AVR rate</div>
           </div>
+          <div class="stat-box" style="border-top:3px solid var(--esl-yellow);">
+            <div class="value esl-yellow" style="font-size:2rem;">60%</div>
+            <div class="label">Target rate<br>(match non-oct)</div>
+          </div>
+          <div class="stat-box" style="border-top:3px solid var(--esl-green);">
+            <div class="value esl-green" style="font-size:2rem;">97</div>
+            <div class="label">Additional patients<br>receiving AVR</div>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Sensitivity: Varying Target AVR Rate</h3>
+          <table>
+            <tr><th>Target</th><th>Additional AVR</th><th>Lives Saved</th><th>Hosp Avoided</th></tr>
+            <tr><td>50%</td><td>43</td><td>15.5</td><td>55.6</td></tr>
+            <tr><td>60%</td><td>97</td><td class="sig">34.9</td><td class="sig">125.1</td></tr>
+            <tr><td>70%</td><td>151</td><td class="sig">54.4</td><td class="sig">194.8</td></tr>
+            <tr><td>80%</td><td>204</td><td class="sig">73.4</td><td class="sig">263.2</td></tr>
+          </table>
         </div>
       </div>
-      <div>
-        <div class="card" style="border-left:3px solid var(--esl-green);">
-          <h3>Real-Time Output</h3>
-          <table style="font-size:0.8rem;">
-            <tr><td><strong>Age Group:</strong></td><td>Octogenarian</td></tr>
-            <tr><td><strong>5yr Survival (no AVR):</strong></td><td style="color:var(--esl-red);">31.2%</td></tr>
-            <tr><td><strong>5yr Survival (AVR):</strong></td><td style="color:var(--esl-green);">68.5%</td></tr>
-            <tr><td><strong>Absolute Risk Reduction:</strong></td><td style="color:var(--esl-green);font-weight:700;">37.3%</td></tr>
-            <tr><td><strong>NNT (5yr):</strong></td><td>2.7</td></tr>
-            <tr><td><strong>Hosp Rate Reduction:</strong></td><td>55.2%</td></tr>
-          </table>
-          <div style="margin-top:0.6rem;padding:0.6rem;background:rgba(0,191,99,0.1);border-radius:6px;text-align:center;">
-            <span style="font-size:1.1rem;font-weight:800;color:var(--esl-green);">&#10003; Strong AVR Benefit</span>
-          </div>
-        </div>
-        <div class="card" style="margin-top:0.6rem;">
-          <h3>Teaching Application</h3>
-          <p>Students and residents can explore how each comorbidity shifts the risk profile. Toggle HF on/off &mdash; watch survival drop from 68% to 31%.</p>
+      <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;">
+        <img src="assets/8.1.png" class="screenshot-img" alt="Treatment Gap Plot — MathBridge Output">
+        <div class="screenshot-caption">MathBridge Output — Treatment Gap Analysis: Impact at 5 Years</div>
+        <div class="stat-box" style="margin-top:0.8rem;width:100%;border-top:3px solid var(--esl-green);">
+          <div class="value esl-green" style="font-size:1.8rem;">~35 lives saved</div>
+          <div class="label">~117 hospitalisations avoided at 60% target</div>
         </div>
       </div>
     </div>
   </div>
-  <div class="slide-number">10</div>
+  <div class="slide-number">12</div>
 </div>
 
-<!-- ========== SLIDE 11: SENSITIVITY ========== -->
+<!-- ========== SLIDE 13: INTERACTIVE DASHBOARD + SCREENSHOT ========== -->
 <div class="slide">
-  <div class="logo-bar"><img src="assets/esl_logo.png" alt="ESL"><div class="sep"></div><img src="assets/wolfram_logo.png" alt="Wolfram"></div>
+  <div class="logo-bar"><img src="assets/mathbridge_logo.png" alt="MathBridge"><div class="sep"></div><img src="assets/esl_logo.png" alt="ESL"><div class="sep"></div><img src="assets/wolfram_logo.png" alt="Wolfram"></div>
+  <div class="content">
+    <h2>Interactive Dashboard: <span class="esl-purple">Manipulate</span></h2>
+    <p class="subtitle">MathBridge generated a real-time patient risk scorer — adjust parameters, see immediate AVR benefit</p>
+    <div class="grid-2">
+      <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;">
+        <img src="assets/11.png" class="screenshot-img" alt="Manipulate Interactive Dashboard — MathBridge Output">
+        <div class="screenshot-caption">MathBridge Output — Wolfram Manipulate Interactive Dashboard</div>
+      </div>
+      <div>
+        <div class="card" style="border-left:3px solid var(--esl-green);margin-bottom:0.8rem;">
+          <h3>Real-Time Parameters</h3>
+          <ul>
+            <li>Age slider (60&ndash;90 years)</li>
+            <li>Sex toggle (Male / Female)</li>
+            <li>MPG (40&ndash;80 mmHg)</li>
+            <li>AVA (0.4&ndash;1.0 cm&sup2;)</li>
+            <li>Comorbidity checkboxes: HF, AF, HTN, DM, CAD, MI, COPD, Dementia</li>
+            <li>Symptomatic toggle</li>
+          </ul>
+        </div>
+        <div class="card" style="border-left:3px solid var(--esl-purple);">
+          <h3>Live Output</h3>
+          <table style="font-size:0.8rem;">
+            <tr><td><strong>5yr Survival (no AVR):</strong></td><td style="color:var(--esl-red);">31.2%</td></tr>
+            <tr><td><strong>5yr Survival (AVR):</strong></td><td style="color:var(--esl-green);">68.5%</td></tr>
+            <tr><td><strong>Absolute Risk Reduction:</strong></td><td style="color:var(--esl-green);font-weight:700;">37.3%</td></tr>
+            <tr><td><strong>NNT (5yr):</strong></td><td>2.7</td></tr>
+          </table>
+          <div style="margin-top:0.5rem;text-align:center;">
+            <span class="pill pill-green" style="font-size:0.8rem;">&#10003; Strong AVR Benefit</span>
+          </div>
+        </div>
+        <div class="mb-badge" style="margin-top:0.6rem;">&#128300; No Shiny/Dash needed — Wolfram Manipulate, powered by MathBridge</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">13</div>
+</div>
+
+<!-- ========== SLIDE 14: SENSITIVITY / E-VALUE ========== -->
+<div class="slide">
+  <div class="logo-bar"><img src="assets/mathbridge_logo.png" alt="MathBridge"><div class="sep"></div><img src="assets/esl_logo.png" alt="ESL"><div class="sep"></div><img src="assets/wolfram_logo.png" alt="Wolfram"></div>
   <div class="content">
     <h2>Sensitivity Analysis: <span class="wolfram-accent">E-Value Robustness</span></h2>
-    <p class="subtitle">How strong would an unmeasured confounder need to be to nullify the AVR benefit?</p>
+    <p class="subtitle">MathBridge computed E-values to assess confounding resistance — how robust is the AVR benefit?</p>
     <div class="grid-2">
       <div>
         <div class="formula" style="font-size:0.85rem;">E-value = HR<sup>&minus;1</sup> + &radic;(HR<sup>&minus;1</sup> &middot; (HR<sup>&minus;1</sup> &minus; 1))</div>
@@ -907,161 +1018,7 @@ eventTime = (cumH^(<span class="num">1</span>/shape)) / lambda;  <span class="cm
         </ul>
         <br>
         <div class="highlight-box">
-          <strong style="color:var(--esl-green);">Conclusion:</strong> It is implausible that unmeasured confounding alone explains the AVR mortality benefit. The finding is robust.
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="slide-number">11</div>
-</div>
-
-<!-- ========== SLIDE 12: TREATMENT GAP ========== -->
-<div class="slide">
-  <div class="logo-bar"><img src="assets/esl_logo.png" alt="ESL"><div class="sep"></div><img src="assets/wolfram_logo.png" alt="Wolfram"></div>
-  <div class="content">
-    <h2>Treatment Gap Quantification: <span class="esl-red">Lives at Stake</span></h2>
-    <p class="subtitle">What if octogenarian AVR rates matched non-octogenarian rates?</p>
-    <div class="grid-3">
-      <div class="stat-box" style="border-top:3px solid var(--esl-red);">
-        <div class="value" style="color:var(--esl-red);">42%</div>
-        <div class="label">Current octogenarian<br>AVR rate</div>
-      </div>
-      <div class="stat-box" style="border-top:3px solid var(--esl-yellow);">
-        <div class="value esl-yellow">60%</div>
-        <div class="label">Target rate<br>(match non-oct)</div>
-      </div>
-      <div class="stat-box" style="border-top:3px solid var(--esl-green);">
-        <div class="value esl-green">97</div>
-        <div class="label">Additional patients<br>receiving AVR</div>
-      </div>
-    </div>
-    <div class="grid-2" style="margin-top:1rem;">
-      <div class="card" style="border-left:3px solid var(--esl-green);">
-        <h3>Impact at 5 Years</h3>
-        <div class="grid-2">
-          <div class="stat-box"><div class="value esl-green" style="font-size:2rem;">~35</div><div class="label">Lives saved</div></div>
-          <div class="stat-box"><div class="value esl-blue" style="font-size:2rem;">~117</div><div class="label">Hospitalisations avoided</div></div>
-        </div>
-      </div>
-      <div class="card">
-        <h3>Sensitivity: Varying Target AVR Rate</h3>
-        <table>
-          <tr><th>Target</th><th>Additional AVR</th><th>Lives Saved</th><th>Hosp Avoided</th></tr>
-          <tr><td>50%</td><td>43</td><td>15.5</td><td>55.6</td></tr>
-          <tr><td>60%</td><td>97</td><td class="sig">34.9</td><td class="sig">125.1</td></tr>
-          <tr><td>70%</td><td>151</td><td class="sig">54.4</td><td class="sig">194.8</td></tr>
-          <tr><td>80%</td><td>204</td><td class="sig">73.4</td><td class="sig">263.2</td></tr>
-        </table>
-      </div>
-    </div>
-  </div>
-  <div class="slide-number">12</div>
-</div>
-
-<!-- ========== SLIDE 13: PATIENT RISK SCORER ========== -->
-<div class="slide">
-  <div class="logo-bar"><img src="assets/esl_logo.png" alt="ESL"><div class="sep"></div><img src="assets/wolfram_logo.png" alt="Wolfram"></div>
-  <div class="content">
-    <h2>Individual Patient Risk Scorer: <span class="esl-green">Three Scenarios</span></h2>
-    <p class="subtitle">PatientRiskScore[] outputs a complete clinical decision package</p>
-    <div class="grid-3">
-      <div class="card" style="border-top:3px solid var(--esl-green);">
-        <h3 style="color:var(--esl-green);">Low Risk</h3>
-        <p><strong>82F, asymptomatic</strong><br>MPG 44, AVA 0.80<br>Hypertension only</p>
-        <table style="margin-top:0.5rem;font-size:0.7rem;">
-          <tr><td>S(5yr) no AVR</td><td><strong>56.8%</strong></td></tr>
-          <tr><td>S(5yr) AVR</td><td style="color:var(--esl-green);"><strong>81.2%</strong></td></tr>
-          <tr><td>ARR</td><td class="sig">24.4%</td></tr>
-          <tr><td>NNT</td><td>4.1</td></tr>
-        </table>
-        <div style="margin-top:0.4rem;text-align:center;">
-          <span class="pill pill-green">Strong AVR benefit</span>
-        </div>
-      </div>
-      <div class="card" style="border-top:3px solid var(--esl-yellow);">
-        <h3 style="color:var(--esl-yellow);">Medium Risk</h3>
-        <p><strong>85M, symptomatic</strong><br>MPG 50, AVA 0.70<br>HTN + DM + CAD + AF</p>
-        <table style="margin-top:0.5rem;font-size:0.7rem;">
-          <tr><td>S(5yr) no AVR</td><td><strong>33.5%</strong></td></tr>
-          <tr><td>S(5yr) AVR</td><td style="color:var(--esl-green);"><strong>69.1%</strong></td></tr>
-          <tr><td>ARR</td><td class="sig">35.6%</td></tr>
-          <tr><td>NNT</td><td>2.8</td></tr>
-        </table>
-        <div style="margin-top:0.4rem;text-align:center;">
-          <span class="pill pill-green">Strong AVR benefit</span>
-        </div>
-      </div>
-      <div class="card" style="border-top:3px solid var(--esl-red);">
-        <h3 style="color:var(--esl-red);">High Risk</h3>
-        <p><strong>88M, symptomatic</strong><br>MPG 55, AVA 0.55<br>HF + AF + MI + CAD + COPD</p>
-        <table style="margin-top:0.5rem;font-size:0.7rem;">
-          <tr><td>S(5yr) no AVR</td><td><strong>8.2%</strong></td></tr>
-          <tr><td>S(5yr) AVR</td><td style="color:var(--esl-green);"><strong>38.7%</strong></td></tr>
-          <tr><td>ARR</td><td class="sig">30.5%</td></tr>
-          <tr><td>NNT</td><td>3.3</td></tr>
-        </table>
-        <div style="margin-top:0.4rem;text-align:center;">
-          <span class="pill pill-green">Strong AVR benefit</span>
-        </div>
-      </div>
-    </div>
-    <div class="highlight-box" style="margin-top:0.8rem;text-align:center;">
-      <strong style="color:var(--esl-green);">Key Insight:</strong> Even the highest-risk octogenarian (8.2% baseline survival) gains 30+ percentage points from AVR. The <em>absolute</em> benefit is largest in moderate-risk patients.
-    </div>
-  </div>
-  <div class="slide-number">13</div>
-</div>
-
-<!-- ========== SLIDE 14: VALIDATION & AUDIT ========== -->
-<div class="slide">
-  <div class="logo-bar"><img src="assets/esl_logo.png" alt="ESL"><div class="sep"></div><img src="assets/wolfram_logo.png" alt="Wolfram"></div>
-  <div class="content">
-    <h2>Automated Proof Audit: <span class="esl-green">25 Checks, Zero Failures</span></h2>
-    <p class="subtitle">proof_audit.wls &mdash; executable validation script run before delivery</p>
-    <div class="grid-2">
-      <div class="nb-screenshot" style="font-size:0.65rem;">
-        <div style="color:var(--esl-blue);font-weight:700;margin-bottom:0.4rem;">$ wolframscript -file proof_audit.wls</div>
-        <div><span class="nb-output">=== AUDIT 1: Reference Data Integrity ===</span></div>
-        <div>&nbsp; <span style="color:var(--esl-green);">PASS:</span> Cohort total = 1396</div>
-        <div>&nbsp; <span style="color:var(--esl-green);">PASS:</span> Non-oct = 858</div>
-        <div>&nbsp; <span style="color:var(--esl-green);">PASS:</span> Oct = 538</div>
-        <div>&nbsp; <span style="color:var(--esl-green);">PASS:</span> 858 + 538 = 1396</div>
-        <div>&nbsp; <span style="color:var(--esl-green);">PASS:</span> AVR rate oct &lt; non-oct</div>
-        <div>&nbsp; <span style="color:var(--esl-green);">PASS:</span> HR oct &lt; HR non-oct</div>
-        <div><span class="nb-output">=== AUDIT 2: Synthetic Cohort ===</span></div>
-        <div>&nbsp; <span style="color:var(--esl-green);">PASS:</span> Non-oct ages in [60,79]</div>
-        <div>&nbsp; <span style="color:var(--esl-green);">PASS:</span> Oct ages in [80,90]</div>
-        <div>&nbsp; <span style="color:var(--esl-green);">PASS:</span> All MPG &ge; 40</div>
-        <div>&nbsp; <span style="color:var(--esl-green);">PASS:</span> All AVA &lt; 1.0</div>
-        <div><span class="nb-output">=== AUDIT 3: Survival Model ===</span></div>
-        <div>&nbsp; <span style="color:var(--esl-green);">PASS:</span> S(0) near 1.0</div>
-        <div>&nbsp; <span style="color:var(--esl-green);">PASS:</span> S(t) monotonically decreasing</div>
-        <div>&nbsp; <span style="color:var(--esl-green);">PASS:</span> AVR survival &gt; non-AVR</div>
-        <div>&nbsp; <span style="color:var(--esl-green);">PASS:</span> HF patient survival &lt; non-HF</div>
-        <div><span class="nb-output">=== AUDIT 7: Reproducibility ===</span></div>
-        <div>&nbsp; <span style="color:var(--esl-green);">PASS:</span> Reproducible cohort generation</div>
-        <div style="margin-top:0.4rem;border-top:1px solid rgba(255,255,255,0.1);padding-top:0.4rem;">
-          <span style="color:var(--esl-green);font-weight:700;">Passed: 25 &nbsp; Failed: 0 &nbsp; Warnings: 0</span><br>
-          <span style="color:var(--esl-green);font-weight:700;">OVERALL: ALL AUDITS PASSED</span>
-        </div>
-      </div>
-      <div>
-        <div class="card" style="margin-bottom:0.8rem;">
-          <h3>7 Audit Categories</h3>
-          <ol style="padding-left:1.2rem;font-size:0.8rem;color:var(--text-secondary);line-height:1.8;">
-            <li>Reference Data Integrity (paper values match)</li>
-            <li>Synthetic Cohort Validation (distributions match)</li>
-            <li>Survival Model Consistency (monotonicity, S(0)=1)</li>
-            <li>NNT Validity (ARR &gt; 0, risk reduction confirmed)</li>
-            <li>E-Value Computation (point &gt; CI &gt; 1)</li>
-            <li>Hospitalisation Model (rate ratio &asymp; IRR 0.39)</li>
-            <li>Reproducibility (SeedRandom determinism)</li>
-          </ol>
-        </div>
-        <div class="card">
-          <h3>Why This Matters</h3>
-          <p>Every Mathematica notebook we deliver includes an <strong>executable audit script</strong> that mechanically verifies correctness &mdash; independent of human review.</p>
-          <p style="margin-top:0.3rem;">This is the standard for computational reproducibility in clinical research.</p>
+          <strong style="color:var(--esl-green);">MathBridge Conclusion:</strong> It is implausible that unmeasured confounding alone explains the AVR mortality benefit. The finding is robust.
         </div>
       </div>
     </div>
@@ -1069,47 +1026,47 @@ eventTime = (cumH^(<span class="num">1</span>/shape)) / lambda;  <span class="cm
   <div class="slide-number">14</div>
 </div>
 
-<!-- ========== SLIDE 15: FOR EDWARDS R&D ========== -->
+<!-- ========== SLIDE 15: FOR EDWARDS R&D & TAU ========== -->
 <div class="slide">
-  <div class="logo-bar"><img src="assets/esl_logo.png" alt="ESL"><div class="sep"></div><img src="assets/wolfram_logo.png" alt="Wolfram"></div>
+  <div class="logo-bar"><img src="assets/mathbridge_logo.png" alt="MathBridge"><div class="sep"></div><img src="assets/esl_logo.png" alt="ESL"><div class="sep"></div><img src="assets/wolfram_logo.png" alt="Wolfram"></div>
   <div class="content">
-    <h2>For <span class="gradient-text">Edwards R&D &amp; Academic Partners</span></h2>
-    <p class="subtitle">How this tool fits your workflows at Edwards Lifesciences and TAU/Sheba</p>
+    <h2><span class="mb-gradient">MathBridge</span> for <span class="gradient-text">Edwards R&D &amp; TAU</span></h2>
+    <p class="subtitle">How MathBridge fits your research and product workflows</p>
     <div class="grid-2">
       <div class="card" style="border-left:3px solid var(--esl-purple);">
         <h3 style="color:var(--esl-purple);">&#127891; University Teaching (TAU)</h3>
         <ul>
-          <li><strong>Cardiology fellows:</strong> Interactive Manipulate dashboard for teaching AVR decision-making</li>
-          <li><strong>Biostatistics courses:</strong> Live Cox PH model &mdash; change covariates, see KM curves shift</li>
+          <li><strong>Cardiology fellows:</strong> Upload any paper, get an interactive Manipulate dashboard in minutes</li>
+          <li><strong>Biostatistics courses:</strong> Students ask MathBridge to build Cox PH models — change covariates live</li>
           <li><strong>Journal clubs:</strong> Paper reproduction in 1 notebook &mdash; verify any claim interactively</li>
-          <li><strong>Thesis supervision:</strong> Students extend the model with new cohorts or covariates</li>
+          <li><strong>Thesis supervision:</strong> Students extend models with new cohorts or covariates</li>
           <li><strong>Grand rounds:</strong> Export publication-quality figures directly from the notebook</li>
         </ul>
       </div>
       <div class="card" style="border-left:3px solid var(--wolfram-red);">
         <h3 style="color:var(--wolfram-red);">&#128300; Edwards R&D (Irvine &amp; KSM)</h3>
         <ul>
-          <li><strong>Market sizing:</strong> Quantify untreated octogenarian AS population by geography</li>
-          <li><strong>Clinical trial design:</strong> Power analysis with the Cox PH engine</li>
-          <li><strong>Regulatory submissions:</strong> Reproducible evidence packages for FDA/CE</li>
+          <li><strong>Market sizing:</strong> Upload competitor papers, MathBridge quantifies untreated populations</li>
+          <li><strong>Clinical trial design:</strong> Ask MathBridge for power analysis with paper-derived Cox PH models</li>
+          <li><strong>Regulatory submissions:</strong> Reproducible evidence packages for FDA/CE — auditable notebooks</li>
           <li><strong>Health economics:</strong> Cost-effectiveness models with hospitalisation projections</li>
           <li><strong>Physician engagement:</strong> Interactive demos for valve clinic partnerships</li>
         </ul>
       </div>
     </div>
     <div class="highlight-box" style="margin-top:1rem;text-align:center;">
-      <strong style="color:var(--esl-green);">Every figure, table, and statistical claim in your paper can be reproduced, extended, and explored interactively in a single Mathematica notebook.</strong>
+      <strong style="color:var(--esl-green);">Upload any paper. Ask any question. Get a verified, interactive Wolfram notebook — in minutes, not weeks.</strong>
     </div>
   </div>
   <div class="slide-number">15</div>
 </div>
 
-<!-- ========== SLIDE 16: DELIVERABLES ========== -->
+<!-- ========== SLIDE 16: CLOSING ========== -->
 <div class="slide">
-  <div class="logo-bar"><img src="assets/esl_logo.png" alt="ESL"><div class="sep"></div><img src="assets/wolfram_logo.png" alt="Wolfram"></div>
+  <div class="logo-bar"><img src="assets/mathbridge_logo.png" alt="MathBridge"><div class="sep"></div><img src="assets/esl_logo.png" alt="ESL"><div class="sep"></div><img src="assets/wolfram_logo.png" alt="Wolfram"></div>
   <div class="content" style="text-align:center;">
-    <h1><span class="gradient-text">Ready to Run</span></h1>
-    <p class="subtitle">Open-source &mdash; GitHub public repository</p>
+    <h1><span class="mb-gradient">MathBridge</span></h1>
+    <p style="font-size:clamp(1rem,2vw,1.4rem);color:var(--text-accent);margin-bottom:1rem;">Ask math in English. Get verified answers.</p>
     <div class="grid-3" style="margin:1.5rem 0;">
       <div class="stat-box" style="border-top:3px solid var(--esl-blue);">
         <div class="value esl-blue" style="font-size:1.5rem;">.nb</div>
@@ -1129,9 +1086,11 @@ eventTime = (cumH^(<span class="num">1</span>/shape)) / lambda;  <span class="cm
 github.com/zuwasi/<span class="fn">wolfram-avr-octogenarian-decision-support</span></div>
     </div>
     <div class="author-block" style="margin-top:1rem;">
+      <img src="assets/mathbridge_logo.png" alt="MathBridge" style="height:48px;">
       <img src="assets/esl_logo.png" alt="ESL" style="height:48px;">
       <div style="font-size:0.8rem;color:var(--text-secondary);">
         <strong style="color:var(--text-primary);">Engineering Software Lab</strong><br>
+        Wolfram Technology Partner for Israel<br>
         Turning research papers into executable science
       </div>
       <img src="assets/wolfram_logo.png" alt="Wolfram" style="height:40px;">
