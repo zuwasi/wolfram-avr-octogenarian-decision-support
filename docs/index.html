@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<title>MathBridge — Cardiac Valve Research → Executable Decision-Support Model</title>
+<title>VeriMath — Cardiac Valve Research → Executable Decision-Support Model</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
@@ -23,7 +23,7 @@
     --border-subtle: rgba(139, 92, 246, 0.2);
     --gradient-esl: linear-gradient(135deg, #5271FF 0%, #8C52FF 50%, #FF3131 100%);
     --gradient-wolfram: linear-gradient(135deg, #DD1100 0%, #ff4422 100%);
-    --gradient-mb: linear-gradient(135deg, #FF3131 0%, #FFDE59 25%, #5271FF 75%, #00BF63 100%);
+    --gradient-vm: linear-gradient(135deg, #FF3131 0%, #FFDE59 25%, #5271FF 75%, #00BF63 100%);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -126,8 +126,8 @@
     background-clip: text;
   }
 
-  .mb-gradient {
-    background: var(--gradient-mb);
+  .vm-gradient {
+    background: var(--gradient-vm);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -162,7 +162,6 @@
 
   .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
   .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
-  .grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 1rem; }
 
   .card {
     background: var(--bg-card);
@@ -254,7 +253,7 @@
     position: relative;
   }
   .nb-screenshot::before {
-    content: 'MathBridge Notebook Output';
+    content: 'VeriMath Notebook Output';
     display: block;
     font-size: 0.6rem;
     color: var(--wolfram-red);
@@ -361,7 +360,7 @@
     margin: 0.5rem 0;
   }
 
-  .mb-badge {
+  .vm-badge {
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
@@ -380,7 +379,6 @@
     background: var(--bg-card);
     border: 1px solid var(--border-subtle);
     border-radius: 10px;
-    position: relative;
   }
   .workflow-step .step-num {
     width: 28px; height: 28px;
@@ -415,11 +413,15 @@
     opacity: 0.6;
   }
 
+  .vs-table td:first-child {
+    color: var(--esl-blue);
+    font-weight: 600;
+  }
+
   @media (max-width: 768px) {
     .slide { padding: 1rem 1.2rem; }
     .grid-2 { grid-template-columns: 1fr; gap: 0.8rem; }
     .grid-3 { grid-template-columns: 1fr; gap: 0.6rem; }
-    .grid-4 { grid-template-columns: 1fr 1fr; gap: 0.6rem; }
     .logo-bar img { height: 22px; }
     .nav-arrow { width: 36px; height: 36px; font-size: 0.9rem; }
     .author-block { flex-direction: column; gap: 0.8rem; }
@@ -445,19 +447,19 @@
 <!-- ========== SLIDE 1: TITLE ========== -->
 <div class="slide">
   <div class="logo-bar">
-    <img src="assets/mathbridge_logo.png" alt="MathBridge">
+    <img src="assets/mathbridge_logo.png" alt="VeriMath">
     <div class="sep"></div>
     <img src="assets/esl_logo.png" alt="ESL">
     <div class="sep"></div>
     <img src="assets/wolfram_logo.png" alt="Wolfram">
   </div>
   <div class="content" style="text-align:center;">
-    <h1><span class="mb-gradient">MathBridge</span></h1>
-    <p style="font-size:clamp(0.8rem,1.6vw,1.1rem);color:var(--text-accent);margin-bottom:0.6rem;font-weight:500;">Ask math in English. Get verified answers.</p>
+    <h1><span class="vm-gradient">VeriMath</span></h1>
+    <p style="font-size:clamp(0.8rem,1.6vw,1.1rem);color:var(--text-accent);margin-bottom:0.6rem;font-weight:500;">Natural Language &rarr; Verified Mathematics</p>
     <h2 style="font-size:clamp(1.2rem,2.8vw,2rem);font-weight:600;">Cardiac Valve Research Paper &rarr; <span class="esl-green">Executable Decision-Support Model</span></h2>
     <p class="subtitle" style="max-width:900px;margin:0.6rem auto;">Massalha et al., <em>Open Heart</em> 2025 &mdash; automatically transformed into a validated Wolfram Mathematica analysis</p>
     <div style="margin:1rem 0;">
-      <img src="assets/amp-workflow.png" class="workflow-img" alt="MathBridge Research-to-Code Workflow" style="max-height:38vh;">
+      <img src="assets/amp-workflow.png" class="workflow-img" alt="VeriMath Research-to-Code Workflow" style="max-height:38vh;">
     </div>
     <div class="author-block">
       <div class="author-affiliation">
@@ -473,14 +475,14 @@
         Gray Faculty of Medical &amp; Health Sciences
       </div>
     </div>
-    <p style="font-size:0.7rem;color:var(--text-secondary);margin-top:0.6rem;">MathBridge by ESL (Engineering Software Lab) &bull; Wolfram Technology Partner &bull; April 2026</p>
+    <p style="font-size:0.7rem;color:var(--text-secondary);margin-top:0.6rem;">VeriMath by ESL (Engineering Software Lab) &bull; Wolfram Technology Partner &bull; April 2026</p>
   </div>
   <div class="slide-number">01</div>
 </div>
 
 <!-- ========== SLIDE 2: THE PAPER ========== -->
 <div class="slide">
-  <div class="logo-bar"><img src="assets/mathbridge_logo.png" alt="MathBridge"><div class="sep"></div><img src="assets/esl_logo.png" alt="ESL"><div class="sep"></div><img src="assets/wolfram_logo.png" alt="Wolfram"></div>
+  <div class="logo-bar"><img src="assets/mathbridge_logo.png" alt="VeriMath"><div class="sep"></div><img src="assets/esl_logo.png" alt="ESL"><div class="sep"></div><img src="assets/wolfram_logo.png" alt="Wolfram"></div>
   <div class="content">
     <h2>The Paper: <span class="esl-blue">Treatment Disparities in HG-sAS</span></h2>
     <p class="subtitle">Open Heart 2025;12:e003405 &mdash; Maccabi HMO, 2.8M members, 2005&ndash;2022</p>
@@ -490,7 +492,7 @@
           <div class="stat-box"><div class="value gradient-text">1,396</div><div class="label">Patients with HG-sAS<br>858 non-oct + 538 oct</div></div>
           <div class="stat-box"><div class="value" style="color:var(--esl-red);">38%</div><div class="label">Less likely to get AVR<br>(oct: 42% vs non-oct: 60%)</div></div>
           <div class="stat-box"><div class="value esl-green">HR 0.28</div><div class="label">70% mortality reduction<br>with AVR (octogenarians)</div></div>
-          <div class="stat-box"><div class="value esl-yellow">IRR 0.39</div><div class="label">61% hospitalisation reduction<br>(84 → 41 per 100 pt-yr)</div></div>
+          <div class="stat-box"><div class="value esl-yellow">IRR 0.39</div><div class="label">61% hospitalisation reduction<br>(84 &rarr; 41 per 100 pt-yr)</div></div>
         </div>
       </div>
       <div class="card">
@@ -505,23 +507,23 @@
         </ul>
         <br>
         <p><strong>Both symptomatic and asymptomatic octogenarians benefit equally from AVR.</strong></p>
-        <div class="mb-badge" style="margin-top:0.6rem;">&#9889; MathBridge extracted &amp; verified all statistics from this paper</div>
+        <div class="vm-badge" style="margin-top:0.6rem;">&#9889; VeriMath extracted &amp; verified all statistics from this paper</div>
       </div>
     </div>
   </div>
   <div class="slide-number">02</div>
 </div>
 
-<!-- ========== SLIDE 3: WHAT IS MATHBRIDGE ========== -->
+<!-- ========== SLIDE 3: WHAT IS VERIMATH ========== -->
 <div class="slide">
-  <div class="logo-bar"><img src="assets/mathbridge_logo.png" alt="MathBridge"><div class="sep"></div><img src="assets/esl_logo.png" alt="ESL"><div class="sep"></div><img src="assets/wolfram_logo.png" alt="Wolfram"></div>
+  <div class="logo-bar"><img src="assets/mathbridge_logo.png" alt="VeriMath"><div class="sep"></div><img src="assets/esl_logo.png" alt="ESL"><div class="sep"></div><img src="assets/wolfram_logo.png" alt="Wolfram"></div>
   <div class="content">
-    <h2>What is <span class="mb-gradient">MathBridge</span>?</h2>
+    <h2>What is <span class="vm-gradient">VeriMath</span>?</h2>
     <p class="subtitle">Upload a research paper. Ask questions in plain English. Get CAS-verified answers with interactive Wolfram notebooks.</p>
     <div class="grid-3">
       <div class="card" style="border-top:3px solid var(--esl-red);">
         <h3 style="color:var(--esl-red);">&#128196; Upload Your Paper</h3>
-        <p>Drag any PDF &mdash; clinical trial, review, methods paper. MathBridge reads the full text, tables, and figures.</p>
+        <p>Drag any PDF &mdash; clinical trial, review, methods paper. VeriMath reads the full text, tables, and figures.</p>
       </div>
       <div class="card" style="border-top:3px solid var(--esl-blue);">
         <h3>&#128172; Ask in English</h3>
@@ -533,50 +535,93 @@
       </div>
     </div>
     <div class="highlight-box" style="margin-top:1rem;text-align:center;">
-      <strong style="color:var(--esl-green);">MathBridge</strong> is built by <strong>ESL</strong> (Engineering Software Lab), Wolfram Technology Partner for Israel.<br>
+      <strong style="color:var(--esl-green);">VeriMath</strong> is built by <strong>ESL</strong> (Engineering Software Lab), Wolfram Technology Partner for Israel.<br>
       Powered by <strong>Ampcode</strong> + <strong>Wolfram Engine</strong>. Outputs: interactive plots, downloadable .nb notebooks, step-by-step proofs.
     </div>
   </div>
   <div class="slide-number">03</div>
 </div>
 
-<!-- ========== SLIDE 4: MATHBRIDGE WORKFLOW ========== -->
+<!-- ========== SLIDE 4: VERIMATH vs ARXIV "MATHBRIDGE" ========== -->
 <div class="slide">
-  <div class="logo-bar"><img src="assets/mathbridge_logo.png" alt="MathBridge"><div class="sep"></div><img src="assets/esl_logo.png" alt="ESL"><div class="sep"></div><img src="assets/wolfram_logo.png" alt="Wolfram"></div>
+  <div class="logo-bar"><img src="assets/mathbridge_logo.png" alt="VeriMath"><div class="sep"></div><img src="assets/esl_logo.png" alt="ESL"><div class="sep"></div><img src="assets/wolfram_logo.png" alt="Wolfram"></div>
   <div class="content">
-    <h2><span class="mb-gradient">MathBridge</span> Workflow</h2>
-    <p class="subtitle">From PDF upload to verified interactive results — fully automated pipeline</p>
+    <h2><span class="vm-gradient">VeriMath</span> vs. arXiv &ldquo;MathBridge&rdquo;: <span class="esl-red">Completely Different</span></h2>
+    <p class="subtitle">An arXiv paper (2408.07081) describes a dataset called &ldquo;MathBridge&rdquo; &mdash; it solves a fundamentally different problem</p>
+    <div class="grid-2">
+      <div>
+        <div class="table-container">
+          <table class="vs-table">
+            <tr><th></th><th style="color:var(--esl-green);">VeriMath (ESL)</th><th style="color:var(--text-secondary);">MathBridge (arXiv)</th></tr>
+            <tr><td>Type</td><td><strong>Commercial web app</strong></td><td>Academic NLP dataset</td></tr>
+            <tr><td>Input</td><td><strong>Research paper PDF</strong></td><td>Spoken English text</td></tr>
+            <tr><td>Output</td><td><strong>Verified Wolfram notebooks<br>+ interactive plots</strong></td><td>LaTeX formula string</td></tr>
+            <tr><td>Engine</td><td><strong>Wolfram Engine (CAS)</strong></td><td>T5 / BART fine-tuning</td></tr>
+            <tr><td>Purpose</td><td><strong>Research reproduction<br>&amp; decision support</strong></td><td>Subtitle accessibility</td></tr>
+            <tr><td>Verification</td><td><strong>CAS-verified &mdash;<br>symbolic algebra</strong></td><td>None &mdash; statistical<br>text generation</td></tr>
+            <tr><td>Audience</td><td><strong>Researchers, R&D,<br>clinicians</strong></td><td>Hearing-impaired<br>students</td></tr>
+            <tr><td>Delivery</td><td><strong>Interactive .nb + .wl<br>packages + audit scripts</strong></td><td>23M text pairs<br>on HuggingFace</td></tr>
+          </table>
+        </div>
+      </div>
+      <div>
+        <div class="card" style="border-left:3px solid var(--esl-green);margin-bottom:0.8rem;">
+          <h3 style="color:var(--esl-green);">VeriMath: Verified Computation</h3>
+          <p>VeriMath takes a <strong>complete research paper</strong>, extracts the mathematical model, generates <strong>executable Wolfram Language code</strong>, runs it through the <strong>Wolfram Engine</strong>, and delivers verified, interactive results.</p>
+          <p style="margin-top:0.4rem;">Every output is <strong>deterministic and auditable</strong> &mdash; not a neural network prediction.</p>
+        </div>
+        <div class="card" style="border-left:3px solid var(--text-secondary);">
+          <h3 style="color:var(--text-secondary);">arXiv MathBridge: Text-to-LaTeX</h3>
+          <p>The arXiv project trains language models to convert <strong>spoken math descriptions</strong> into LaTeX strings &mdash; e.g., <em>&ldquo;x equals minus b plus or minus the square root of b squared minus four a c&rdquo;</em> &rarr; LaTeX.</p>
+          <p style="margin-top:0.4rem;">It is an <strong>accessibility tool</strong> for math lecture subtitles. No computation, no verification, no notebooks.</p>
+        </div>
+        <div class="highlight-box" style="margin-top:0.5rem;text-align:center;">
+          <strong style="color:var(--esl-green);">The only thing in common is the word &ldquo;math&rdquo;.</strong><br>
+          VeriMath <em>computes and verifies</em>. MathBridge <em>transcribes</em>.
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-number">04</div>
+</div>
+
+<!-- ========== SLIDE 5: VERIMATH WORKFLOW ========== -->
+<div class="slide">
+  <div class="logo-bar"><img src="assets/mathbridge_logo.png" alt="VeriMath"><div class="sep"></div><img src="assets/esl_logo.png" alt="ESL"><div class="sep"></div><img src="assets/wolfram_logo.png" alt="Wolfram"></div>
+  <div class="content">
+    <h2><span class="vm-gradient">VeriMath</span> Workflow</h2>
+    <p class="subtitle">From PDF upload to verified interactive results &mdash; fully automated pipeline</p>
     <div style="display:grid;grid-template-columns:1fr auto 1fr auto 1fr auto 1fr auto 1fr auto 1fr;gap:0.4rem;align-items:center;">
       <div class="workflow-step">
         <div class="step-num">1</div>
         <div class="step-title">Upload PDF</div>
         <div class="step-desc">Researcher uploads paper</div>
       </div>
-      <div class="workflow-arrow">→</div>
+      <div class="workflow-arrow">&rarr;</div>
       <div class="workflow-step">
         <div class="step-num">2</div>
         <div class="step-title">AI Reads Paper</div>
         <div class="step-desc">Extracts equations, tables, HRs</div>
       </div>
-      <div class="workflow-arrow">→</div>
+      <div class="workflow-arrow">&rarr;</div>
       <div class="workflow-step">
         <div class="step-num">3</div>
         <div class="step-title">Generate Code</div>
         <div class="step-desc">Wolfram Language with syntax validation</div>
       </div>
-      <div class="workflow-arrow">→</div>
+      <div class="workflow-arrow">&rarr;</div>
       <div class="workflow-step">
         <div class="step-num">4</div>
         <div class="step-title">Execute</div>
         <div class="step-desc">Wolfram Engine computes results</div>
       </div>
-      <div class="workflow-arrow">→</div>
+      <div class="workflow-arrow">&rarr;</div>
       <div class="workflow-step">
         <div class="step-num">5</div>
         <div class="step-title">Verify</div>
         <div class="step-desc">AI cross-checks against paper values</div>
       </div>
-      <div class="workflow-arrow">→</div>
+      <div class="workflow-arrow">&rarr;</div>
       <div class="workflow-step">
         <div class="step-num">6</div>
         <div class="step-title">Deliver</div>
@@ -586,36 +631,36 @@
     <div class="grid-2" style="margin-top:1.2rem;">
       <div class="card">
         <h3>For This Paper</h3>
-        <p>MathBridge read Massalha et al. (2025), extracted 19 hazard ratios from Table 5, reconstructed the Cox PH model, generated a synthetic 1,396-patient cohort, produced KM survival curves, and delivered a fully validated interactive notebook &mdash; all from a single PDF upload.</p>
+        <p>VeriMath read Massalha et al. (2025), extracted 19 hazard ratios from Table 5, reconstructed the Cox PH model, generated a synthetic 1,396-patient cohort, produced KM survival curves, and delivered a fully validated interactive notebook &mdash; all from a single PDF upload.</p>
       </div>
       <div class="card">
         <h3>What Makes It Different</h3>
         <ul>
           <li><strong>CAS-verified:</strong> Wolfram Engine, not GPT guessing</li>
           <li><strong>Symbolic math:</strong> Exact algebra, not numerical approximation</li>
-          <li><strong>Reproducible:</strong> Deterministic — same seed, same results</li>
+          <li><strong>Reproducible:</strong> Deterministic &mdash; same seed, same results</li>
           <li><strong>Interactive:</strong> Manipulate dashboards, not static plots</li>
         </ul>
       </div>
     </div>
   </div>
-  <div class="slide-number">04</div>
+  <div class="slide-number">05</div>
 </div>
 
-<!-- ========== SLIDE 5: ARCHITECTURE ========== -->
+<!-- ========== SLIDE 6: ARCHITECTURE ========== -->
 <div class="slide">
-  <div class="logo-bar"><img src="assets/mathbridge_logo.png" alt="MathBridge"><div class="sep"></div><img src="assets/esl_logo.png" alt="ESL"><div class="sep"></div><img src="assets/wolfram_logo.png" alt="Wolfram"></div>
+  <div class="logo-bar"><img src="assets/mathbridge_logo.png" alt="VeriMath"><div class="sep"></div><img src="assets/esl_logo.png" alt="ESL"><div class="sep"></div><img src="assets/wolfram_logo.png" alt="Wolfram"></div>
   <div class="content">
-    <h2>MathBridge Output: <span class="esl-purple">AVRDecisionEngine.wl</span></h2>
+    <h2>VeriMath Output: <span class="esl-purple">AVRDecisionEngine.wl</span></h2>
     <p class="subtitle">Auto-generated Wolfram Language package &mdash; 13 public functions, Association-based I/O</p>
     <div class="grid-2">
       <div>
         <div class="code-block"><span class="kw">BeginPackage</span>[<span class="str">"AVRDecisionEngine`"</span>]
 
-<span class="cm">(* 13 Public Functions — generated by MathBridge *)</span>
+<span class="cm">(* 13 Public Functions &mdash; generated by VeriMath *)</span>
 <span class="fn">PaperReferenceData</span>[]       <span class="cm">(* All paper data as Association *)</span>
 <span class="fn">GenerateSyntheticCohort</span>[n, ageGroup]
-<span class="fn">BaselineHazard</span>[t, ageGroup] <span class="cm">(* Weibull: h₀(t) *)</span>
+<span class="fn">BaselineHazard</span>[t, ageGroup] <span class="cm">(* Weibull: h&#8320;(t) *)</span>
 <span class="fn">CoxPHLogHazard</span>[patient, ageGroup]
 <span class="fn">AVRSurvival</span>[t, patient, ageGroup]
 <span class="fn">KaplanMeierEstimate</span>[times, censor, tMax]
@@ -651,20 +696,20 @@
             <li><strong>Paper-traceable:</strong> Every HR maps to Table 4 or 5</li>
             <li><strong>Validated:</strong> 25+ automated audit checks</li>
           </ul>
-          <div class="mb-badge" style="margin-top:0.6rem;">&#9889; Entire package auto-generated by MathBridge</div>
+          <div class="vm-badge" style="margin-top:0.6rem;">&#9889; Entire package auto-generated by VeriMath</div>
         </div>
       </div>
     </div>
   </div>
-  <div class="slide-number">05</div>
+  <div class="slide-number">06</div>
 </div>
 
-<!-- ========== SLIDE 6: SYNTHETIC COHORT ========== -->
+<!-- ========== SLIDE 7: SYNTHETIC COHORT ========== -->
 <div class="slide">
-  <div class="logo-bar"><img src="assets/mathbridge_logo.png" alt="MathBridge"><div class="sep"></div><img src="assets/esl_logo.png" alt="ESL"><div class="sep"></div><img src="assets/wolfram_logo.png" alt="Wolfram"></div>
+  <div class="logo-bar"><img src="assets/mathbridge_logo.png" alt="VeriMath"><div class="sep"></div><img src="assets/esl_logo.png" alt="ESL"><div class="sep"></div><img src="assets/wolfram_logo.png" alt="Wolfram"></div>
   <div class="content">
     <h2>Synthetic Cohort: <span class="esl-green">Validated Against Paper</span></h2>
-    <p class="subtitle">MathBridge generated 1,396 patients with matching distributions for 20+ clinical parameters</p>
+    <p class="subtitle">VeriMath generated 1,396 patients with matching distributions for 20+ clinical parameters</p>
     <div class="grid-2">
       <div>
         <div class="nb-screenshot">
@@ -699,7 +744,7 @@
         </div>
         <div class="card">
           <h3>Validation: 20 Parameters Checked</h3>
-          <p>MathBridge automatically validates each synthetic parameter against paper Table 1 &amp; 2 values:</p>
+          <p>VeriMath automatically validates each synthetic parameter against paper Table 1 &amp; 2 values:</p>
           <ul>
             <li>Continuous: |observed &minus; expected| &lt; 2 SD</li>
             <li>Proportions: |observed &minus; expected| &lt; 5%</li>
@@ -712,15 +757,15 @@
       </div>
     </div>
   </div>
-  <div class="slide-number">06</div>
+  <div class="slide-number">07</div>
 </div>
 
-<!-- ========== SLIDE 7: COX PH MODEL + SCREENSHOT ========== -->
+<!-- ========== SLIDE 8: COX PH MODEL + SCREENSHOT ========== -->
 <div class="slide">
-  <div class="logo-bar"><img src="assets/mathbridge_logo.png" alt="MathBridge"><div class="sep"></div><img src="assets/esl_logo.png" alt="ESL"><div class="sep"></div><img src="assets/wolfram_logo.png" alt="Wolfram"></div>
+  <div class="logo-bar"><img src="assets/mathbridge_logo.png" alt="VeriMath"><div class="sep"></div><img src="assets/esl_logo.png" alt="ESL"><div class="sep"></div><img src="assets/wolfram_logo.png" alt="Wolfram"></div>
   <div class="content">
     <h2>Cox PH Survival Model: <span class="wolfram-accent">19 Covariates</span></h2>
-    <p class="subtitle">MathBridge reconstructed the full model from Table 5 hazard ratios</p>
+    <p class="subtitle">VeriMath reconstructed the full model from Table 5 hazard ratios</p>
     <div class="grid-2">
       <div>
         <div class="formula" style="font-size:0.8rem;">
@@ -744,51 +789,51 @@
         </div>
       </div>
       <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;">
-        <img src="assets/4.1.png" class="screenshot-img" alt="Risk Score Histogram — MathBridge Output">
-        <div class="screenshot-caption">MathBridge Output — Cox PH Risk Score Distribution</div>
+        <img src="assets/4.1.png" class="screenshot-img" alt="Risk Score Histogram — VeriMath Output">
+        <div class="screenshot-caption">VeriMath Output &mdash; Cox PH Risk Score Distribution</div>
       </div>
     </div>
   </div>
-  <div class="slide-number">07</div>
+  <div class="slide-number">08</div>
 </div>
 
-<!-- ========== SLIDE 8: KM CURVES + SCREENSHOT ========== -->
+<!-- ========== SLIDE 9: KM CURVES + SCREENSHOT ========== -->
 <div class="slide">
-  <div class="logo-bar"><img src="assets/mathbridge_logo.png" alt="MathBridge"><div class="sep"></div><img src="assets/esl_logo.png" alt="ESL"><div class="sep"></div><img src="assets/wolfram_logo.png" alt="Wolfram"></div>
+  <div class="logo-bar"><img src="assets/mathbridge_logo.png" alt="VeriMath"><div class="sep"></div><img src="assets/esl_logo.png" alt="ESL"><div class="sep"></div><img src="assets/wolfram_logo.png" alt="Wolfram"></div>
   <div class="content">
     <h2>Kaplan-Meier Survival Curves: <span class="esl-blue">Reproducing Figures 1 &amp; 2</span></h2>
-    <p class="subtitle">MathBridge simulated event times via inverse-CDF method with Cox PH risk adjustment</p>
+    <p class="subtitle">VeriMath simulated event times via inverse-CDF method with Cox PH risk adjustment</p>
     <div style="text-align:center;margin-bottom:0.8rem;">
-      <img src="assets/5.2.png" class="screenshot-img" alt="KM Survival Curves — MathBridge Output" style="max-height:42vh;">
-      <div class="screenshot-caption">MathBridge Output — Kaplan-Meier Survival: AVR vs No AVR by Age Group</div>
+      <img src="assets/5.2.png" class="screenshot-img" alt="KM Survival Curves — VeriMath Output" style="max-height:42vh;">
+      <div class="screenshot-caption">VeriMath Output &mdash; Kaplan-Meier Survival: AVR vs No AVR by Age Group</div>
     </div>
     <div class="grid-2">
       <div class="highlight-box" style="text-align:center;">
         <strong style="color:var(--esl-green);">Key Result:</strong> The survival gap is <em>wider</em> in octogenarians &mdash; AVR benefit is <em>stronger</em> (HR 0.28 vs 0.38), not weaker, in the elderly.
       </div>
       <div class="code-block" style="font-size:0.7rem;">
-<span class="cm">(* MathBridge: event simulation via inverse-CDF *)</span>
+<span class="cm">(* VeriMath: event simulation via inverse-CDF *)</span>
 u = <span class="fn">RandomReal</span>[];  cumH = -<span class="fn">Log</span>[u] / <span class="fn">Exp</span>[lp];
 eventTime = (cumH^(<span class="num">1</span>/shape)) / lambda;</div>
     </div>
   </div>
-  <div class="slide-number">08</div>
+  <div class="slide-number">09</div>
 </div>
 
-<!-- ========== SLIDE 9: SUBGROUP ANALYSIS + SCREENSHOT ========== -->
+<!-- ========== SLIDE 10: SUBGROUP ANALYSIS + SCREENSHOT ========== -->
 <div class="slide">
-  <div class="logo-bar"><img src="assets/mathbridge_logo.png" alt="MathBridge"><div class="sep"></div><img src="assets/esl_logo.png" alt="ESL"><div class="sep"></div><img src="assets/wolfram_logo.png" alt="Wolfram"></div>
+  <div class="logo-bar"><img src="assets/mathbridge_logo.png" alt="VeriMath"><div class="sep"></div><img src="assets/esl_logo.png" alt="ESL"><div class="sep"></div><img src="assets/wolfram_logo.png" alt="Wolfram"></div>
   <div class="content">
     <h2>Subgroup Survival Analysis: <span class="esl-purple">4-Panel Comparison</span></h2>
-    <p class="subtitle">MathBridge reproduced the symptom × age interaction — the paper's central finding</p>
+    <p class="subtitle">VeriMath reproduced the symptom &times; age interaction &mdash; the paper's central finding</p>
     <div style="text-align:center;margin-bottom:0.6rem;">
-      <img src="assets/5.3.png" class="screenshot-img" alt="4-Panel Subgroup Analysis — MathBridge Output" style="max-height:42vh;">
-      <div class="screenshot-caption">MathBridge Output — Subgroup KM Curves: Symptomatic/Asymptomatic × Octogenarian/Non-Octogenarian</div>
+      <img src="assets/5.3.png" class="screenshot-img" alt="4-Panel Subgroup Analysis — VeriMath Output" style="max-height:42vh;">
+      <div class="screenshot-caption">VeriMath Output &mdash; Subgroup KM Curves: Symptomatic/Asymptomatic &times; Octogenarian/Non-Octogenarian</div>
     </div>
     <div class="grid-3">
       <div class="stat-box" style="border-top:3px solid var(--esl-green);">
         <div class="value esl-green" style="font-size:1.4rem;">p = 0.6</div>
-        <div class="label">Interaction (Octogenarians)<br>AVR benefit same ± symptoms</div>
+        <div class="label">Interaction (Octogenarians)<br>AVR benefit same &plusmn; symptoms</div>
       </div>
       <div class="stat-box" style="border-top:3px solid var(--esl-red);">
         <div class="value" style="color:var(--esl-red);font-size:1.4rem;">p = 0.04</div>
@@ -796,19 +841,19 @@ eventTime = (cumH^(<span class="num">1</span>/shape)) / lambda;</div>
       </div>
       <div class="stat-box" style="border-top:3px solid var(--esl-yellow);">
         <div class="value esl-yellow" style="font-size:1.4rem;">NS</div>
-        <div class="label">Asymp non-oct HR 0.60<br>p=0.10 — benefit unclear</div>
+        <div class="label">Asymp non-oct HR 0.60<br>p=0.10 &mdash; benefit unclear</div>
       </div>
     </div>
   </div>
-  <div class="slide-number">09</div>
+  <div class="slide-number">10</div>
 </div>
 
-<!-- ========== SLIDE 10: NNT ANALYSIS ========== -->
+<!-- ========== SLIDE 11: NNT ANALYSIS ========== -->
 <div class="slide">
-  <div class="logo-bar"><img src="assets/mathbridge_logo.png" alt="MathBridge"><div class="sep"></div><img src="assets/esl_logo.png" alt="ESL"><div class="sep"></div><img src="assets/wolfram_logo.png" alt="Wolfram"></div>
+  <div class="logo-bar"><img src="assets/mathbridge_logo.png" alt="VeriMath"><div class="sep"></div><img src="assets/esl_logo.png" alt="ESL"><div class="sep"></div><img src="assets/wolfram_logo.png" alt="Wolfram"></div>
   <div class="content">
     <h2>Number Needed to Treat: <span class="esl-green">Quantifying Clinical Value</span></h2>
-    <p class="subtitle">MathBridge computed NNT across all subgroups — ARR = BaselineRisk &minus; Risk<sub>AVR</sub></p>
+    <p class="subtitle">VeriMath computed NNT across all subgroups &mdash; ARR = BaselineRisk &minus; Risk<sub>AVR</sub></p>
     <div class="grid-2">
       <div class="table-container">
         <table>
@@ -849,15 +894,15 @@ eventTime = (cumH^(<span class="num">1</span>/shape)) / lambda;</div>
       </div>
     </div>
   </div>
-  <div class="slide-number">10</div>
+  <div class="slide-number">11</div>
 </div>
 
-<!-- ========== SLIDE 11: HOSPITALISATION MODEL ========== -->
+<!-- ========== SLIDE 12: HOSPITALISATION MODEL ========== -->
 <div class="slide">
-  <div class="logo-bar"><img src="assets/mathbridge_logo.png" alt="MathBridge"><div class="sep"></div><img src="assets/esl_logo.png" alt="ESL"><div class="sep"></div><img src="assets/wolfram_logo.png" alt="Wolfram"></div>
+  <div class="logo-bar"><img src="assets/mathbridge_logo.png" alt="VeriMath"><div class="sep"></div><img src="assets/esl_logo.png" alt="ESL"><div class="sep"></div><img src="assets/wolfram_logo.png" alt="Wolfram"></div>
   <div class="content">
-    <h2>Hospitalisation Model: <span class="esl-yellow">IRR 0.39 — 61% Reduction</span></h2>
-    <p class="subtitle">MathBridge built a negative binomial simulation from the paper's hospitalisation data</p>
+    <h2>Hospitalisation Model: <span class="esl-yellow">IRR 0.39 &mdash; 61% Reduction</span></h2>
+    <p class="subtitle">VeriMath built a negative binomial simulation from the paper's hospitalisation data</p>
     <div class="grid-2">
       <div>
         <div class="grid-2">
@@ -865,7 +910,7 @@ eventTime = (cumH^(<span class="num">1</span>/shape)) / lambda;</div>
           <div class="stat-box"><div class="value esl-green">41</div><div class="label">Hospitalisations / 100 pt-yr<br><strong>WITH AVR</strong></div></div>
         </div>
         <div class="code-block" style="margin-top:0.8rem;font-size:0.7rem;">
-<span class="cm">(* MathBridge: Negative binomial for overdispersion *)</span>
+<span class="cm">(* VeriMath: Negative binomial for overdispersion *)</span>
 <span class="fn">NegBinomHospitalisations</span>[patient, avr, years] :=
   <span class="kw">Module</span>[{rate, mu, r, p},
     rate = <span class="fn">HospitalisationRate</span>[patient, avr] / <span class="num">100</span>;
@@ -895,15 +940,15 @@ eventTime = (cumH^(<span class="num">1</span>/shape)) / lambda;</div>
       </div>
     </div>
   </div>
-  <div class="slide-number">11</div>
+  <div class="slide-number">12</div>
 </div>
 
-<!-- ========== SLIDE 12: TREATMENT GAP + SCREENSHOT ========== -->
+<!-- ========== SLIDE 13: TREATMENT GAP + SCREENSHOT ========== -->
 <div class="slide">
-  <div class="logo-bar"><img src="assets/mathbridge_logo.png" alt="MathBridge"><div class="sep"></div><img src="assets/esl_logo.png" alt="ESL"><div class="sep"></div><img src="assets/wolfram_logo.png" alt="Wolfram"></div>
+  <div class="logo-bar"><img src="assets/mathbridge_logo.png" alt="VeriMath"><div class="sep"></div><img src="assets/esl_logo.png" alt="ESL"><div class="sep"></div><img src="assets/wolfram_logo.png" alt="Wolfram"></div>
   <div class="content">
     <h2>Treatment Gap Quantification: <span class="esl-red">Lives at Stake</span></h2>
-    <p class="subtitle">MathBridge modelled what happens if octogenarian AVR rates matched non-octogenarian rates</p>
+    <p class="subtitle">VeriMath modelled what happens if octogenarian AVR rates matched non-octogenarian rates</p>
     <div class="grid-2">
       <div>
         <div class="grid-3" style="margin-bottom:1rem;">
@@ -932,8 +977,8 @@ eventTime = (cumH^(<span class="num">1</span>/shape)) / lambda;</div>
         </div>
       </div>
       <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;">
-        <img src="assets/8.1.png" class="screenshot-img" alt="Treatment Gap Plot — MathBridge Output">
-        <div class="screenshot-caption">MathBridge Output — Treatment Gap Analysis: Impact at 5 Years</div>
+        <img src="assets/8.1.png" class="screenshot-img" alt="Treatment Gap Plot — VeriMath Output">
+        <div class="screenshot-caption">VeriMath Output &mdash; Treatment Gap Analysis: Impact at 5 Years</div>
         <div class="stat-box" style="margin-top:0.8rem;width:100%;border-top:3px solid var(--esl-green);">
           <div class="value esl-green" style="font-size:1.8rem;">~35 lives saved</div>
           <div class="label">~117 hospitalisations avoided at 60% target</div>
@@ -941,19 +986,19 @@ eventTime = (cumH^(<span class="num">1</span>/shape)) / lambda;</div>
       </div>
     </div>
   </div>
-  <div class="slide-number">12</div>
+  <div class="slide-number">13</div>
 </div>
 
-<!-- ========== SLIDE 13: INTERACTIVE DASHBOARD + SCREENSHOT ========== -->
+<!-- ========== SLIDE 14: INTERACTIVE DASHBOARD + SCREENSHOT ========== -->
 <div class="slide">
-  <div class="logo-bar"><img src="assets/mathbridge_logo.png" alt="MathBridge"><div class="sep"></div><img src="assets/esl_logo.png" alt="ESL"><div class="sep"></div><img src="assets/wolfram_logo.png" alt="Wolfram"></div>
+  <div class="logo-bar"><img src="assets/mathbridge_logo.png" alt="VeriMath"><div class="sep"></div><img src="assets/esl_logo.png" alt="ESL"><div class="sep"></div><img src="assets/wolfram_logo.png" alt="Wolfram"></div>
   <div class="content">
     <h2>Interactive Dashboard: <span class="esl-purple">Manipulate</span></h2>
-    <p class="subtitle">MathBridge generated a real-time patient risk scorer — adjust parameters, see immediate AVR benefit</p>
+    <p class="subtitle">VeriMath generated a real-time patient risk scorer &mdash; adjust parameters, see immediate AVR benefit</p>
     <div class="grid-2">
       <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;">
-        <img src="assets/11.png" class="screenshot-img" alt="Manipulate Interactive Dashboard — MathBridge Output">
-        <div class="screenshot-caption">MathBridge Output — Wolfram Manipulate Interactive Dashboard</div>
+        <img src="assets/11.png" class="screenshot-img" alt="Manipulate Interactive Dashboard — VeriMath Output">
+        <div class="screenshot-caption">VeriMath Output &mdash; Wolfram Manipulate Interactive Dashboard</div>
       </div>
       <div>
         <div class="card" style="border-left:3px solid var(--esl-green);margin-bottom:0.8rem;">
@@ -979,19 +1024,19 @@ eventTime = (cumH^(<span class="num">1</span>/shape)) / lambda;</div>
             <span class="pill pill-green" style="font-size:0.8rem;">&#10003; Strong AVR Benefit</span>
           </div>
         </div>
-        <div class="mb-badge" style="margin-top:0.6rem;">&#128300; No Shiny/Dash needed — Wolfram Manipulate, powered by MathBridge</div>
+        <div class="vm-badge" style="margin-top:0.6rem;">&#128300; No Shiny/Dash needed &mdash; Wolfram Manipulate, powered by VeriMath</div>
       </div>
     </div>
   </div>
-  <div class="slide-number">13</div>
+  <div class="slide-number">14</div>
 </div>
 
-<!-- ========== SLIDE 14: SENSITIVITY / E-VALUE ========== -->
+<!-- ========== SLIDE 15: SENSITIVITY / E-VALUE ========== -->
 <div class="slide">
-  <div class="logo-bar"><img src="assets/mathbridge_logo.png" alt="MathBridge"><div class="sep"></div><img src="assets/esl_logo.png" alt="ESL"><div class="sep"></div><img src="assets/wolfram_logo.png" alt="Wolfram"></div>
+  <div class="logo-bar"><img src="assets/mathbridge_logo.png" alt="VeriMath"><div class="sep"></div><img src="assets/esl_logo.png" alt="ESL"><div class="sep"></div><img src="assets/wolfram_logo.png" alt="Wolfram"></div>
   <div class="content">
     <h2>Sensitivity Analysis: <span class="wolfram-accent">E-Value Robustness</span></h2>
-    <p class="subtitle">MathBridge computed E-values to assess confounding resistance — how robust is the AVR benefit?</p>
+    <p class="subtitle">VeriMath computed E-values to assess confounding resistance &mdash; how robust is the AVR benefit?</p>
     <div class="grid-2">
       <div>
         <div class="formula" style="font-size:0.85rem;">E-value = HR<sup>&minus;1</sup> + &radic;(HR<sup>&minus;1</sup> &middot; (HR<sup>&minus;1</sup> &minus; 1))</div>
@@ -1018,26 +1063,26 @@ eventTime = (cumH^(<span class="num">1</span>/shape)) / lambda;</div>
         </ul>
         <br>
         <div class="highlight-box">
-          <strong style="color:var(--esl-green);">MathBridge Conclusion:</strong> It is implausible that unmeasured confounding alone explains the AVR mortality benefit. The finding is robust.
+          <strong style="color:var(--esl-green);">VeriMath Conclusion:</strong> It is implausible that unmeasured confounding alone explains the AVR mortality benefit. The finding is robust.
         </div>
       </div>
     </div>
   </div>
-  <div class="slide-number">14</div>
+  <div class="slide-number">15</div>
 </div>
 
-<!-- ========== SLIDE 15: FOR EDWARDS R&D & TAU ========== -->
+<!-- ========== SLIDE 16: FOR EDWARDS R&D & TAU ========== -->
 <div class="slide">
-  <div class="logo-bar"><img src="assets/mathbridge_logo.png" alt="MathBridge"><div class="sep"></div><img src="assets/esl_logo.png" alt="ESL"><div class="sep"></div><img src="assets/wolfram_logo.png" alt="Wolfram"></div>
+  <div class="logo-bar"><img src="assets/mathbridge_logo.png" alt="VeriMath"><div class="sep"></div><img src="assets/esl_logo.png" alt="ESL"><div class="sep"></div><img src="assets/wolfram_logo.png" alt="Wolfram"></div>
   <div class="content">
-    <h2><span class="mb-gradient">MathBridge</span> for <span class="gradient-text">Edwards R&D &amp; TAU</span></h2>
-    <p class="subtitle">How MathBridge fits your research and product workflows</p>
+    <h2><span class="vm-gradient">VeriMath</span> for <span class="gradient-text">Edwards R&D &amp; TAU</span></h2>
+    <p class="subtitle">How VeriMath fits your research and product workflows</p>
     <div class="grid-2">
       <div class="card" style="border-left:3px solid var(--esl-purple);">
         <h3 style="color:var(--esl-purple);">&#127891; University Teaching (TAU)</h3>
         <ul>
           <li><strong>Cardiology fellows:</strong> Upload any paper, get an interactive Manipulate dashboard in minutes</li>
-          <li><strong>Biostatistics courses:</strong> Students ask MathBridge to build Cox PH models — change covariates live</li>
+          <li><strong>Biostatistics courses:</strong> Students ask VeriMath to build Cox PH models &mdash; change covariates live</li>
           <li><strong>Journal clubs:</strong> Paper reproduction in 1 notebook &mdash; verify any claim interactively</li>
           <li><strong>Thesis supervision:</strong> Students extend models with new cohorts or covariates</li>
           <li><strong>Grand rounds:</strong> Export publication-quality figures directly from the notebook</li>
@@ -1046,27 +1091,27 @@ eventTime = (cumH^(<span class="num">1</span>/shape)) / lambda;</div>
       <div class="card" style="border-left:3px solid var(--wolfram-red);">
         <h3 style="color:var(--wolfram-red);">&#128300; Edwards R&D (Irvine &amp; KSM)</h3>
         <ul>
-          <li><strong>Market sizing:</strong> Upload competitor papers, MathBridge quantifies untreated populations</li>
-          <li><strong>Clinical trial design:</strong> Ask MathBridge for power analysis with paper-derived Cox PH models</li>
-          <li><strong>Regulatory submissions:</strong> Reproducible evidence packages for FDA/CE — auditable notebooks</li>
+          <li><strong>Market sizing:</strong> Upload competitor papers, VeriMath quantifies untreated populations</li>
+          <li><strong>Clinical trial design:</strong> Ask VeriMath for power analysis with paper-derived Cox PH models</li>
+          <li><strong>Regulatory submissions:</strong> Reproducible evidence packages for FDA/CE &mdash; auditable notebooks</li>
           <li><strong>Health economics:</strong> Cost-effectiveness models with hospitalisation projections</li>
           <li><strong>Physician engagement:</strong> Interactive demos for valve clinic partnerships</li>
         </ul>
       </div>
     </div>
     <div class="highlight-box" style="margin-top:1rem;text-align:center;">
-      <strong style="color:var(--esl-green);">Upload any paper. Ask any question. Get a verified, interactive Wolfram notebook — in minutes, not weeks.</strong>
+      <strong style="color:var(--esl-green);">Upload any paper. Ask any question. Get a verified, interactive Wolfram notebook &mdash; in minutes, not weeks.</strong>
     </div>
   </div>
-  <div class="slide-number">15</div>
+  <div class="slide-number">16</div>
 </div>
 
-<!-- ========== SLIDE 16: CLOSING ========== -->
+<!-- ========== SLIDE 17: CLOSING ========== -->
 <div class="slide">
-  <div class="logo-bar"><img src="assets/mathbridge_logo.png" alt="MathBridge"><div class="sep"></div><img src="assets/esl_logo.png" alt="ESL"><div class="sep"></div><img src="assets/wolfram_logo.png" alt="Wolfram"></div>
+  <div class="logo-bar"><img src="assets/mathbridge_logo.png" alt="VeriMath"><div class="sep"></div><img src="assets/esl_logo.png" alt="ESL"><div class="sep"></div><img src="assets/wolfram_logo.png" alt="Wolfram"></div>
   <div class="content" style="text-align:center;">
-    <h1><span class="mb-gradient">MathBridge</span></h1>
-    <p style="font-size:clamp(1rem,2vw,1.4rem);color:var(--text-accent);margin-bottom:1rem;">Ask math in English. Get verified answers.</p>
+    <h1><span class="vm-gradient">VeriMath</span></h1>
+    <p style="font-size:clamp(1rem,2vw,1.4rem);color:var(--text-accent);margin-bottom:1rem;">Natural Language &rarr; Verified Mathematics</p>
     <div class="grid-3" style="margin:1.5rem 0;">
       <div class="stat-box" style="border-top:3px solid var(--esl-blue);">
         <div class="value esl-blue" style="font-size:1.5rem;">.nb</div>
@@ -1086,17 +1131,17 @@ eventTime = (cumH^(<span class="num">1</span>/shape)) / lambda;</div>
 github.com/zuwasi/<span class="fn">wolfram-avr-octogenarian-decision-support</span></div>
     </div>
     <div class="author-block" style="margin-top:1rem;">
-      <img src="assets/mathbridge_logo.png" alt="MathBridge" style="height:48px;">
+      <img src="assets/mathbridge_logo.png" alt="VeriMath" style="height:48px;">
       <img src="assets/esl_logo.png" alt="ESL" style="height:48px;">
       <div style="font-size:0.8rem;color:var(--text-secondary);">
         <strong style="color:var(--text-primary);">Engineering Software Lab</strong><br>
         Wolfram Technology Partner for Israel<br>
-        Turning research papers into executable science
+        Natural Language &rarr; Verified Mathematics
       </div>
       <img src="assets/wolfram_logo.png" alt="Wolfram" style="height:40px;">
     </div>
   </div>
-  <div class="slide-number">16</div>
+  <div class="slide-number">17</div>
 </div>
 
 </div><!-- slides-container -->
